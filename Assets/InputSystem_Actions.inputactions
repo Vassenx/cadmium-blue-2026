@@ -591,7 +591,7 @@
                     "name": "",
                     "id": "5638412d-59c4-4569-b911-5cb189626f35",
                     "path": "<Keyboard>/ctrl",
-                    "interactions": "Hold(duration=1,pressPoint=1)",
+                    "interactions": "Hold(duration=1,pressPoint=1),Press",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Candle",
