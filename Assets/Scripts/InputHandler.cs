@@ -23,11 +23,13 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private string spaceDebugInput = "Jump"; // for debugging
     [SerializeField] private string mouseDeltaInput = "MouseDelta";
     [SerializeField] private string candleInput = "Candle";
+    [SerializeField] private string interactInput = "Interact";
 
     private InputAction playerMovementAction;
     private InputAction spaceDebugAction;
     private InputAction mouseDeltaAction;
     private InputAction candleAction;
+    private InputAction interactAction;
     
     public static InputHandler Instance { get; private set; }
 
@@ -47,6 +49,8 @@ public class InputHandler : MonoBehaviour
         spaceDebugAction = playerInputMapReference.FindAction(spaceDebugInput);
         mouseDeltaAction = playerInputMapReference.FindAction(mouseDeltaInput);
         candleAction = playerInputMapReference.FindAction(candleInput);
+        interactAction = playerInputMapReference.FindAction(interactInput);
+        
         
         InputEventSub();
     }
@@ -64,6 +68,7 @@ public class InputHandler : MonoBehaviour
         candleAction.performed += inputEvent => CandleButtonHeld.Invoke(true);
 
         candleAction.canceled += inputEvent => CandleButtonHeld.Invoke(false);
+        
     }
     
     public bool DebugSpacePressed()
