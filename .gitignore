@@ -16,6 +16,9 @@
 *.blend1
 *.blend1.meta
 
+# mac
+**/.DS_Store
+
 # jetbrains rider
 ./idea
 
