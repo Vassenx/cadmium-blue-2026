@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 
@@ -9,6 +10,9 @@ public class InputHandler : MonoBehaviour
     //class handles inputs from input system events and passes it to the controller.
     public Vector2 movementVector2 { get; private set; }
     public Vector2 cameraMovementVector2 { get; private set; }
+    public bool heldCandleButton { get; private set; }
+
+    public UnityEvent<bool> CandleButtonHeld;
     
     //Input systems crap
     [SerializeField] private InputActionAsset playerControls;
@@ -18,10 +22,12 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private string playerMovementInput = "Move";
     [SerializeField] private string spaceDebugInput = "Jump"; // for debugging
     [SerializeField] private string mouseDeltaInput = "MouseDelta";
+    [SerializeField] private string candleInput = "Candle";
 
     private InputAction playerMovementAction;
     private InputAction spaceDebugAction;
     private InputAction mouseDeltaAction;
+    private InputAction candleAction;
     
     public static InputHandler Instance { get; private set; }
 
@@ -40,6 +46,7 @@ public class InputHandler : MonoBehaviour
         playerMovementAction = playerInputMapReference.FindAction(playerMovementInput);
         spaceDebugAction = playerInputMapReference.FindAction(spaceDebugInput);
         mouseDeltaAction = playerInputMapReference.FindAction(mouseDeltaInput);
+        candleAction = playerInputMapReference.FindAction(candleInput);
         
         InputEventSub();
     }
@@ -53,6 +60,10 @@ public class InputHandler : MonoBehaviour
         //camera couch caaast boom badu boom ba tss
         mouseDeltaAction.performed += inputEvent => cameraMovementVector2 = inputEvent.ReadValue<Vector2>();
         mouseDeltaAction.canceled += inputEvent => cameraMovementVector2 = Vector2.zero;
+
+        candleAction.performed += inputEvent => CandleButtonHeld.Invoke(true);
+
+        candleAction.canceled += inputEvent => CandleButtonHeld.Invoke(false);
     }
     
     public bool DebugSpacePressed()

@@ -710,6 +710,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7874680432476109700, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
   m_PrefabInstance: {fileID: 3675381242118822703}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1902792578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4463316900710079854, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+  m_PrefabInstance: {fileID: 3675381242118822703}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0faa6a5154c5f448cbb404f601e34344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
 --- !u!4 &41710859272031684
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,6 +1100,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1605457341}
     - target: {fileID: 2943480922947570384, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943480922947570384, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: candleFlameVFX
       value: 
       objectReference: {fileID: 1605457342}
@@ -1096,6 +1111,10 @@ PrefabInstance:
       propertyPath: candleFlameRenderer
       value: 
       objectReference: {fileID: 1605457341}
+    - target: {fileID: 2943480922947570384, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: playerMovementController
+      value: 
+      objectReference: {fileID: 1902792578}
     - target: {fileID: 3240228193267370507, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_Name
       value: Player

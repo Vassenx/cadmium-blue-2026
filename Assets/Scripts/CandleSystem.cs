@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class CandleSystem : MonoBehaviour
 {
+    [SerializeField] private PlayerMovementController playerMovementController; // disable movement while changing candle
     [SerializeField] private Light candleLight;
     [SerializeField] private ParticleSystemRenderer candleFlameRenderer;
     
@@ -18,6 +19,8 @@ public class CandleSystem : MonoBehaviour
     
     void Start()
     {
+        InputHandler.Instance.CandleButtonHeld.AddListener(OnCandleInput);
+        
         originalLightIntensity = candleLight.intensity;
         isCandleOn = true;
 
@@ -27,11 +30,6 @@ public class CandleSystem : MonoBehaviour
 
     void Update()
     {
-        if (InputHandler.Instance.DebugSpacePressed())
-        {
-            ToggleCandle();
-        }
-        
         if (dimmingCandle)
         {
             LerpCandleInternal(false);
@@ -42,6 +40,14 @@ public class CandleSystem : MonoBehaviour
         }
     }
 
+    public void OnCandleInput(bool inputSuccess)
+    {
+        if (inputSuccess)
+        {
+            ToggleCandle();
+        }
+    }
+    
     public void ShowCandle()
     {
         // if not already on and not already in the process of dimming
@@ -76,6 +82,8 @@ public class CandleSystem : MonoBehaviour
     {
         if (elapsedTime < duration)
         {
+            playerMovementController.movementEnabled = false;
+            
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
             float lerpValueFlameMat = toggleOn ?  Mathf.Lerp(0, 1, t) : Mathf.Lerp(1, 0, t);
@@ -83,7 +91,7 @@ public class CandleSystem : MonoBehaviour
 
             // update mat
             Color oldColor = candleFlameRenderer.sharedMaterial.color;
-            candleFlameRenderer.sharedMaterial.color = new Color(lerpValueFlameMat, oldColor.r, oldColor.g, oldColor.b);
+            candleFlameRenderer.sharedMaterial.color = new Color(oldColor.r, oldColor.g, oldColor.b, lerpValueFlameMat);
             // update light
             candleLight.intensity = lerpValueLightIntensity;
         }
@@ -91,7 +99,7 @@ public class CandleSystem : MonoBehaviour
         {
             // update mat
             Color oldColor = candleFlameRenderer.sharedMaterial.color;
-            candleFlameRenderer.sharedMaterial.color = new Color(0, oldColor.r, oldColor.g, oldColor.b);
+            candleFlameRenderer.sharedMaterial.color = new Color(oldColor.r, oldColor.g, oldColor.b, 0);
             // update light
             candleLight.intensity = toggleOn ? originalLightIntensity : 0;
             
@@ -100,6 +108,7 @@ public class CandleSystem : MonoBehaviour
             glowingCandle = false;
             dimmingCandle = false;
             isCandleOn = toggleOn;
+            playerMovementController.movementEnabled = true;
         }
     }
 }

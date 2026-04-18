@@ -19,22 +19,26 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private Vector3 currMovement;
     [SerializeField] private float vertLimit;
 
+    public bool movementEnabled = true;
+
     void Start()
     {
         //see noi evil see no mousey comrade
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        movementEnabled = true;
 
         InputHandler.Instance.Enable();
     }
 
     private void Update()
     {
-        HandleMovement();
-        HandleRotation();
+        if (movementEnabled)
+        {
+            HandleMovement();
+            HandleRotation();
+        }
     }
-
-    
 
     private Vector3 CalculateWorldDirection()
     {
@@ -43,9 +47,6 @@ public class PlayerMovementController : MonoBehaviour
         return worldDirection.normalized;
     }
 
-
-
-    
     void HandleMovement()
     {
         if (InputHandler.Instance == null)
