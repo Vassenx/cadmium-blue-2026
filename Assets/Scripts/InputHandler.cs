@@ -18,8 +18,10 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private string actionMapName = "Player";
     //action names
     [SerializeField] private string playerMovementInput = "Move";
+    [SerializeField] private string spaceDebugInput = "Jump"; // for debugging
 
     private InputAction playerMovementAction;
+    private InputAction spaceDebugAction;
     
     public static InputHandler Instance { get; private set; }
 
@@ -36,6 +38,7 @@ public class InputHandler : MonoBehaviour
     
         InputActionMap playerInputMapReference = playerControls.FindActionMap(actionMapName);
         playerMovementAction = playerInputMapReference.FindAction(playerMovementInput);
+        spaceDebugAction = playerInputMapReference.FindAction(spaceDebugInput);
 
         InputEventSub();
     }
@@ -45,6 +48,11 @@ public class InputHandler : MonoBehaviour
         //need to subscribe to events coming from that InputManager. InputSystems broadcasts the events
         playerMovementAction.performed += inputEvent => movementVector2 = inputEvent.ReadValue<Vector2>();
         playerMovementAction.canceled += inputEvent => movementVector2 = Vector2.zero;
+    }
+    
+    public bool DebugSpacePressed()
+    {
+        return spaceDebugAction.WasPressedThisFrame();
     }
 
     public void Enable()
