@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,13 +8,18 @@ public class RotatePiece : MonoBehaviour
 {
     Transform pieceTransform;
     InputAction puzzleAction;
-    int originalPosition = 0;
+    public int positionChange = 0;
     public Transform circle;
     Vector2 circleOrigin;
     public bool leftControls = true;
     float timer = 5;
     bool resetting = false;
+    public int[] targetZones;
+    public RotatePiece pairedPiece;
+    public string completeAction;
 
+    //Disaster jank
+    public GameObject settingsMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,8 +39,24 @@ public class RotatePiece : MonoBehaviour
             timer = 5; // Reset timer
             resetting = false;
             float neg = puzzleAction.ReadValue<float>();
-            originalPosition += (int)neg;
+            positionChange += (int)neg;
+            if (positionChange == 12) positionChange = 0;
             pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
+
+            if ((pairedPiece.targetZones.Contains(pairedPiece.positionChange) 
+            || pairedPiece.targetZones.Contains(-(12 - Math.Abs(pairedPiece.positionChange)))) 
+            && (targetZones.Contains(positionChange)
+            || targetZones.Contains(-(12 - Math.Abs(positionChange)))))
+            {
+                if (((targetZones.Length > 1 && positionChange == targetZones[1]) 
+                    || pairedPiece.targetZones.Length > 1 && pairedPiece.positionChange == pairedPiece.targetZones[1])
+                    && completeAction == "STARTSCENE")
+                {
+                    settingsMenu.SetActive(true);
+                }
+                pairedPiece.enabled = false;
+                gameObject.GetComponent<RotatePiece>().enabled = false;
+            }
         }
         else if (timer <= 0 && !resetting)
         {
@@ -52,16 +75,16 @@ public class RotatePiece : MonoBehaviour
         {
             yield return null;
         }
-        while (originalPosition > 0)
+        while (positionChange > 0 && resetting)
         {
             pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
-            originalPosition--;
+            positionChange--;
             yield return new WaitForSeconds(.75f);
         }
-        while (originalPosition < 0)
+        while (positionChange < 0 && resetting)
         {
             pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f);
-            originalPosition++;
+            positionChange++;
             yield return new WaitForSeconds(.75f);
         }
         resetting = false;
