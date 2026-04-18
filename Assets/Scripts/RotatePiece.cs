@@ -40,31 +40,35 @@ public class RotatePiece : MonoBehaviour
             resetting = false;
             float neg = puzzleAction.ReadValue<float>();
             positionChange += (int)neg;
-            if (positionChange == 12) positionChange = 0;
+            if (Math.Abs(positionChange) == 16) positionChange = 0;
             pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
 
             if ((pairedPiece.targetZones.Contains(pairedPiece.positionChange) 
-            || pairedPiece.targetZones.Contains(-(12 - Math.Abs(pairedPiece.positionChange)))) 
+            || pairedPiece.targetZones.Contains(-(16 - Math.Abs(pairedPiece.positionChange)))) 
             && (targetZones.Contains(positionChange)
-            || targetZones.Contains(-(12 - Math.Abs(positionChange)))))
+            || targetZones.Contains(-(16 - Math.Abs(positionChange)))))
             {
-                if (((targetZones.Length > 1 && (positionChange == targetZones[0] || (-(12 - Math.Abs(positionChange))) == targetZones[0])) 
-                    || pairedPiece.targetZones.Length > 1 && (pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(12 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0])
+                if (((targetZones.Length > 0 && (positionChange == targetZones[0] || (-(16 - Math.Abs(positionChange))) == targetZones[0])) 
+                    || pairedPiece.targetZones.Length > 0 && (pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0])
                     && completeAction == "STARTSCENE")
                 {
                     // TODO: START GAME/GO TO GAME SCENE
                 }
-                if (((targetZones.Length > 1 && (positionChange == targetZones[1] || (-(12 - Math.Abs(positionChange))) == targetZones[1])) 
-                    || pairedPiece.targetZones.Length > 1 && (pairedPiece.positionChange == pairedPiece.targetZones[1]) || (-(12 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[1])
+                if (targetZones.Length > 1 
+                    || pairedPiece.targetZones.Length > 1
                     && completeAction == "STARTSCENE")
                 {
-                    settingsMenu.SetActive(true);
+                    if ((positionChange == targetZones[1] || (-(16 - Math.Abs(positionChange))) == targetZones[1]) 
+                        || ((pairedPiece.positionChange == pairedPiece.targetZones[1]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[1]))
+                        settingsMenu.SetActive(true);
                 }
-                if (((targetZones.Length > 1 && (positionChange == targetZones[2] || (-(12 - Math.Abs(positionChange))) == targetZones[2])) 
-                    || pairedPiece.targetZones.Length > 1 && (pairedPiece.positionChange == pairedPiece.targetZones[2]) || (-(12 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[2])
+                if (targetZones.Length > 2
+                    || pairedPiece.targetZones.Length > 2
                     && completeAction == "STARTSCENE")
                 {
-                    Application.Quit();
+                    if ((positionChange == targetZones[2] || (-(16 - Math.Abs(positionChange))) == targetZones[2]) 
+                        || ((pairedPiece.positionChange == pairedPiece.targetZones[2]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[2]))
+                        Application.Quit();
                 }
                 if (completeAction == "PUZZLE1")
                 {
