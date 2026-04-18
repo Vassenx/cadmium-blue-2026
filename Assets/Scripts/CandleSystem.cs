@@ -1,0 +1,105 @@
+using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class CandleSystem : MonoBehaviour
+{
+    [SerializeField] private Light candleLight;
+    [SerializeField] private ParticleSystemRenderer candleFlameRenderer;
+    
+    [SerializeField] private float duration = 4f;
+    private float elapsedTime;
+    private bool isCandleOn = true;
+    private bool dimmingCandle = false;
+    private bool glowingCandle = false;
+    private float originalLightIntensity;
+    
+    void Start()
+    {
+        originalLightIntensity = candleLight.intensity;
+        isCandleOn = true;
+
+        var originalMat = candleFlameRenderer.sharedMaterial;
+        candleFlameRenderer.sharedMaterial = new Material(originalMat); // prevents color changes to save to the asset
+    }
+
+    void Update()
+    {
+        if (InputHandler.Instance.DebugSpacePressed())
+        {
+            ToggleCandle();
+        }
+        
+        if (dimmingCandle)
+        {
+            LerpCandleInternal(false);
+        }
+        else if (glowingCandle)
+        {
+            LerpCandleInternal(true);
+        }
+    }
+
+    public void ShowCandle()
+    {
+        // if not already on and not already in the process of dimming
+        if (!isCandleOn && !dimmingCandle)
+        {
+            glowingCandle = true;
+        }
+    }
+    
+    public void HideCandle()
+    {
+        // if the candle is on and not already in the process of glowing
+        if (isCandleOn && !glowingCandle)
+        {
+            dimmingCandle = true;
+        }
+    }
+
+    public void ToggleCandle()
+    {
+        if (!isCandleOn)
+        {
+            ShowCandle();
+        }
+        else
+        {
+            HideCandle();
+        }
+    }
+    
+    private void LerpCandleInternal(bool toggleOn)
+    {
+        if (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            float lerpValueFlameMat = toggleOn ?  Mathf.Lerp(0, 1, t) : Mathf.Lerp(1, 0, t);
+            float lerpValueLightIntensity = toggleOn ? Mathf.Lerp(0, originalLightIntensity, t): Mathf.Lerp(originalLightIntensity, 0, t);
+
+            // update mat
+            Color oldColor = candleFlameRenderer.sharedMaterial.color;
+            candleFlameRenderer.sharedMaterial.color = new Color(lerpValueFlameMat, oldColor.r, oldColor.g, oldColor.b);
+            // update light
+            candleLight.intensity = lerpValueLightIntensity;
+        }
+        else if (elapsedTime >= duration)
+        {
+            // update mat
+            Color oldColor = candleFlameRenderer.sharedMaterial.color;
+            candleFlameRenderer.sharedMaterial.color = new Color(0, oldColor.r, oldColor.g, oldColor.b);
+            // update light
+            candleLight.intensity = toggleOn ? originalLightIntensity : 0;
+            
+            elapsedTime = 0;
+
+            glowingCandle = false;
+            dimmingCandle = false;
+            isCandleOn = toggleOn;
+        }
+    }
+}
