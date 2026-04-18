@@ -6,8 +6,6 @@ using Vector2 = UnityEngine.Vector2;
 
 public class InputHandler : MonoBehaviour
 {
-
-
     //class handles inputs from input system events and passes it to the controller.
     public Vector2 movementVector2 { get; private set; }
     public Vector2 cameraMovementVector2 { get; private set; }
@@ -19,9 +17,11 @@ public class InputHandler : MonoBehaviour
     //action names
     [SerializeField] private string playerMovementInput = "Move";
     [SerializeField] private string spaceDebugInput = "Jump"; // for debugging
+    [SerializeField] private string mouseDeltaInput = "MouseDelta";
 
     private InputAction playerMovementAction;
     private InputAction spaceDebugAction;
+    private InputAction mouseDeltaAction;
     
     public static InputHandler Instance { get; private set; }
 
@@ -39,7 +39,8 @@ public class InputHandler : MonoBehaviour
         InputActionMap playerInputMapReference = playerControls.FindActionMap(actionMapName);
         playerMovementAction = playerInputMapReference.FindAction(playerMovementInput);
         spaceDebugAction = playerInputMapReference.FindAction(spaceDebugInput);
-
+        mouseDeltaAction = playerInputMapReference.FindAction(mouseDeltaInput);
+        
         InputEventSub();
     }
 
@@ -48,6 +49,10 @@ public class InputHandler : MonoBehaviour
         //need to subscribe to events coming from that InputManager. InputSystems broadcasts the events
         playerMovementAction.performed += inputEvent => movementVector2 = inputEvent.ReadValue<Vector2>();
         playerMovementAction.canceled += inputEvent => movementVector2 = Vector2.zero;
+        
+        //camera couch caaast boom badu boom ba tss
+        mouseDeltaAction.performed += inputEvent => cameraMovementVector2 = inputEvent.ReadValue<Vector2>();
+        mouseDeltaAction.canceled += inputEvent => cameraMovementVector2 = Vector2.zero;
     }
     
     public bool DebugSpacePressed()
