@@ -48,11 +48,23 @@ public class RotatePiece : MonoBehaviour
             && (targetZones.Contains(positionChange)
             || targetZones.Contains(-(12 - Math.Abs(positionChange)))))
             {
-                if (((targetZones.Length > 1 && positionChange == targetZones[1]) 
-                    || pairedPiece.targetZones.Length > 1 && pairedPiece.positionChange == pairedPiece.targetZones[1])
+                if (((targetZones.Length > 1 && (positionChange == targetZones[0] || (-(12 - Math.Abs(positionChange))) == targetZones[0])) 
+                    || pairedPiece.targetZones.Length > 1 && (pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(12 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0])
+                    && completeAction == "STARTSCENE")
+                {
+                    // TODO: START GAME/GO TO GAME SCENE
+                }
+                if (((targetZones.Length > 1 && (positionChange == targetZones[1] || (-(12 - Math.Abs(positionChange))) == targetZones[1])) 
+                    || pairedPiece.targetZones.Length > 1 && (pairedPiece.positionChange == pairedPiece.targetZones[1]) || (-(12 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[1])
                     && completeAction == "STARTSCENE")
                 {
                     settingsMenu.SetActive(true);
+                }
+                if (((targetZones.Length > 1 && (positionChange == targetZones[2] || (-(12 - Math.Abs(positionChange))) == targetZones[2])) 
+                    || pairedPiece.targetZones.Length > 1 && (pairedPiece.positionChange == pairedPiece.targetZones[2]) || (-(12 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[2])
+                    && completeAction == "STARTSCENE")
+                {
+                    Application.Quit();
                 }
                 pairedPiece.enabled = false;
                 gameObject.GetComponent<RotatePiece>().enabled = false;
