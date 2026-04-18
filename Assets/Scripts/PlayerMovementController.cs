@@ -1,3 +1,4 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -13,34 +14,36 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Unity Game Objects in the Player GO")]
     [SerializeField] private CharacterController characterController;
     [SerializeField] private CinemachineCamera cam;
-    [SerializeField] private Movement playerMovementInput;
-
 
     private Vector3 currMovement;
 
     private float cameraVertRotation;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //see noi evil see no mousey comrade
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
+
+        InputHandler.Instance.Enable();
+    }
+
+    private void Update()
+    {
+        HandleMovement();
     }
 
     void HandleMovement()
     {
-        Vector3 worldDir = CalculateWorldVectorPlayer();
-        currMovement.x = worldDir.x * speed;
-        currMovement.y = worldDir.y * speed;
+        if (InputHandler.Instance == null)
+        { return; }
         
-        characterController.Move(currMovement * Time.deltaTime);
-    }
-
-    void HandleRotation()
-    {
-       //TODO
+        currMovement = new Vector3(InputHandler.Instance.movementVector2.x, 0, InputHandler.Instance.movementVector2.y);
+        if (!currMovement.AlmostZero())
+        {
+            currMovement.Normalize();
+            characterController.Move(currMovement * Time.deltaTime * speed);
+        }
     }
 
     void HandleCameraRotation()
@@ -56,14 +59,5 @@ public class PlayerMovementController : MonoBehaviour
 
 
         //TODO add input mapping for cam and assign to mouseX and MouseY
-    }
-
-    //helper method 
-    Vector3 CalculateWorldVectorPlayer()
-    {
-        Vector3 inputDir = new Vector3(playerMovementInput.movementVector2.x, 0f,
-            playerMovementInput.movementVector2.y);
-        
-        return transform.TransformDirection(inputDir).normalized;
     }
 }

@@ -16,7 +16,11 @@
 *.blend1
 *.blend1.meta
 
+# mac
 **/.DS_Store
+
+# jetbrains rider
+./idea
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
