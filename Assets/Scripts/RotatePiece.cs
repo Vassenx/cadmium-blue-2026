@@ -19,7 +19,7 @@ public class RotatePiece : MonoBehaviour
     public string completeAction;
 
     //Disaster jank
-    public GameObject settingsMenu;
+    public GameObject settingsMenu = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,6 +65,10 @@ public class RotatePiece : MonoBehaviour
                     && completeAction == "STARTSCENE")
                 {
                     Application.Quit();
+                }
+                if (completeAction == "PUZZLE1")
+                {
+                    // TODO: SET PUZZLE1 IS COMPLETE
                 }
                 pairedPiece.enabled = false;
                 gameObject.GetComponent<RotatePiece>().enabled = false;
