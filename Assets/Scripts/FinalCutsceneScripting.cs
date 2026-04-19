@@ -30,12 +30,14 @@ public class FinalCutsceneScripting : MonoBehaviour
         sp2c.LiftSpear(1);
         sp3c.LiftSpear(70);
         yield return new WaitForSeconds(8);
+        spear2.GetComponent<AudioSource>().Play();
         sp1c.LowerSpear(5);
         sp2c.LowerSpear(5);
         sp3c.LowerSpear(5);
         yield return new WaitForSeconds(3);
-        // PLAY PASTOR FOOTSTEPS
         wolfPastor.SetActive(true);
+        wolfPastor.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds (2);
         flock.SetActive(true);
         yield return new WaitForSeconds(10);
         // TURN CAMERA

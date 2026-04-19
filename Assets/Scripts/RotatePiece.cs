@@ -30,7 +30,7 @@ public class RotatePiece : MonoBehaviour
         if (leftControls)
             puzzleAction = InputSystem.actions.FindAction("PuzzleLeft");
         else puzzleAction = InputSystem.actions.FindAction("PuzzleRight");
-        circleOrigin = Vector3.zero;
+        circleOrigin = circle.transform.position;
     }
 
     // Update is called once per frame
@@ -170,7 +170,7 @@ public class RotatePiece : MonoBehaviour
         while (verticalTimer > 0)
         {
             timer = 5;
-            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f, 0);
+            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f * 0.02f, 0);
             verticalTimer--;
             yield return new WaitForSeconds(.05f);
         }
