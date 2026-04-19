@@ -10,6 +10,8 @@ public class PlayerActionController : MonoBehaviour
 
     [SerializeField]
     private float maxAimDistance = 5f;
+
+    public GameObject currentPuzzle;
     
     [SerializeField] LayerMask interactableLayer;
     //just for debugging
@@ -47,6 +49,7 @@ public class PlayerActionController : MonoBehaviour
                     if (hit.transform.gameObject.TryGetComponent(out PuzzleTransitionManager transitionManager))
                     {
                         transitionManager.TriggerPuzzleTransition();
+                        currentPuzzle = hit.transform.gameObject;
                     }
                 }
             }
