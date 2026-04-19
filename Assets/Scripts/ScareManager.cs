@@ -44,19 +44,20 @@ public class ScareManager : MonoBehaviour
 
     private void Update()
     {
-        //Random sounds
-        randomSoundTimer -= Time.deltaTime;
-        if (randomSoundTimer <= 0.0f)
-        {
-            RandomSoundsTrigger();
-        }
-        
-        
         //logic to decide when to trigger but at abnormal intervals depending on what the player is doing
         //at random occurrences, trigger beast sounds
         if(playerMovementController.isInPuzzle)
         {
             
+        }
+        else
+        {
+            //Random sounds
+            randomSoundTimer -= Time.deltaTime;
+            if (randomSoundTimer <= 0.0f)
+            {
+                RandomSoundsTrigger();
+            }   
         }
     }
 
@@ -66,8 +67,9 @@ public class ScareManager : MonoBehaviour
         scareObjects[0].SetActive(true);
     }
 
-    public void TriggerBeast()
+    public void TriggerBeastSound()
     {
+        audioSource.PlayOneShot(beastSounds.audioClips[0]);
  
     }
 
