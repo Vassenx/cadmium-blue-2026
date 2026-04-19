@@ -40,11 +40,11 @@ public class PuzzleTransitionManager : MonoBehaviour
     void SwitchToPuzzleCam()
     {
         player.GetComponent<PlayerMovementController>().movementEnabled = false;
+        player.GetComponent<PlayerMovementController>().isInPuzzle = true;
         playerCam.SetActive(false);
         puzzleCam.gameObject.SetActive(true);
         StartCoroutine(EnforceSleep(2f));
         EnableWolfAndSheep();
-
     }
 
     
@@ -60,6 +60,7 @@ public class PuzzleTransitionManager : MonoBehaviour
         puzzleCam.gameObject.SetActive(false);
         StartCoroutine(EnforceSleep(2f));
         player.GetComponent<PlayerMovementController>().movementEnabled = true;
+        player.GetComponent<PlayerMovementController>().isInPuzzle = false;
     }
 
     void EnableWolfAndSheep()
