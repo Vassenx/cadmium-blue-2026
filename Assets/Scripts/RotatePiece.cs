@@ -36,6 +36,7 @@ public class RotatePiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isOuter && isComplete && completeAction != "STARTSCENE") return;
         if (puzzleAction.WasPerformedThisFrame())
         {
             timer = 5; // Reset timer
@@ -150,7 +151,7 @@ public class RotatePiece : MonoBehaviour
             timer = 5;
             gameObject.transform.parent.transform.position += new Vector3(0, 0.25f, 0);
             verticalTimer--;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
         }
         yield return null;
     }

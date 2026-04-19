@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 259114537}
   - component: {fileID: 259114542}
   m_Layer: 0
-  m_Name: Sheep
+  m_Name: Sheared
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,9 @@ MonoBehaviour:
   leftControls: 0
   targetZones: 0c000000
   pairedPiece: {fileID: 1151036275}
-  completeAction: STARTSCENE
+  completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
 --- !u!136 &259114538
 CapsuleCollider:
@@ -284,12 +286,12 @@ Transform:
   m_GameObject: {fileID: 259114536}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11, y: 3, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 434669458}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 597141549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &259114542
 MonoBehaviour:
@@ -331,7 +333,7 @@ Transform:
   m_GameObject: {fileID: 358825300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.25881916, z: -0, w: -0.9659258}
-  m_LocalPosition: {x: 8.5, y: 0, z: -17}
+  m_LocalPosition: {x: 9, y: 0, z: -18}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -824,6 +826,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593805269}
   m_Mesh: {fileID: 5667830107899840030, guid: 308f8801868e84ad2a55b7fe6613a7f5, type: 3}
+--- !u!1 &597141548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597141549}
+  m_Layer: 0
+  m_Name: ShearedTier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597141549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597141548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1597805332}
+  - {fileID: 259114541}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918440264
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +872,7 @@ GameObject:
   - component: {fileID: 918440266}
   - component: {fileID: 918440265}
   m_Layer: 0
-  m_Name: ShearedPlane
+  m_Name: SheepPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,7 +926,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -3033667219593020291, guid: f25408eee1af3ea4eb3aa799fbe0ffa9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -922,7 +957,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918440264}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: f25408eee1af3ea4eb3aa799fbe0ffa9, type: 3}
 --- !u!4 &918440268
 Transform:
   m_ObjectHideFlags: 0
@@ -931,12 +966,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918440264}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 0, z: 30}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15, y: -11, z: 0}
+  m_LocalScale: {x: 19, y: 15, z: 19}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1233063030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1011574930
 GameObject:
@@ -1315,7 +1350,7 @@ GameObject:
   - component: {fileID: 1151036276}
   - component: {fileID: 1151036275}
   m_Layer: 0
-  m_Name: ShearedSheep
+  m_Name: Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,7 +1373,9 @@ MonoBehaviour:
   leftControls: 1
   targetZones: 02000000
   pairedPiece: {fileID: 259114537}
-  completeAction: STARTSCENE
+  completeAction: 
+  isOuter: 1
+  isComplete: 0
   settingsMenu: {fileID: 0}
 --- !u!136 &1151036276
 CapsuleCollider:
@@ -1429,13 +1466,13 @@ Transform:
   m_GameObject: {fileID: 1151036274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533597263}
   - {fileID: 1227144341}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1233063030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227144340
 GameObject:
@@ -1550,6 +1587,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227144340}
   m_Mesh: {fileID: 5667830107899840030, guid: 4868241b327a626bca93b714052bc881, type: 3}
+--- !u!1 &1233063029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233063030}
+  m_Layer: 0
+  m_Name: SheepTier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1233063030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233063029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 918440268}
+  - {fileID: 1151036279}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332518991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1746,7 @@ GameObject:
   - component: {fileID: 1597805330}
   - component: {fileID: 1597805329}
   m_Layer: 0
-  m_Name: SheepPlane
+  m_Name: ShearedPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1730,7 +1800,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -3033667219593020291, guid: 8f5fe9a50bcfcfb6097975c1c8e85c60, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1761,7 +1831,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597805328}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: 8f5fe9a50bcfcfb6097975c1c8e85c60, type: 3}
 --- !u!4 &1597805332
 Transform:
   m_ObjectHideFlags: 0
@@ -1770,12 +1840,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597805328}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 25, y: 0, z: 25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8, y: -8.5, z: 0}
+  m_LocalScale: {x: 19, y: 10, z: 19}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 597141549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739491980
 GameObject:
@@ -2103,8 +2173,6 @@ SceneRoots:
   - {fileID: 1011574933}
   - {fileID: 1739491982}
   - {fileID: 1779043047}
-  - {fileID: 1597805332}
-  - {fileID: 259114541}
-  - {fileID: 918440268}
-  - {fileID: 1151036279}
+  - {fileID: 597141549}
+  - {fileID: 1233063030}
   - {fileID: 83139205}
