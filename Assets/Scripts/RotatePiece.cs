@@ -114,7 +114,9 @@ public class RotatePiece : MonoBehaviour
                     lunge.Lunge();
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    PuzzleTransitionManager ptm = gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>();
+                    ptm.EndPuzzleTransition();
+                    ptm.isCompleted = true;
                 }
                 if (completeAction == "PUZZLE2")
                 {
@@ -122,7 +124,9 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    PuzzleTransitionManager ptm = gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>();
+                    ptm.EndPuzzleTransition();
+                    ptm.isCompleted = true;
                 }
                 if (completeAction == "PUZZLE3")
                 {
@@ -130,8 +134,9 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
-
+                    PuzzleTransitionManager ptm = gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>();
+                    ptm.EndPuzzleTransition();
+                    ptm.isCompleted = true;
                 }
             }
         }
