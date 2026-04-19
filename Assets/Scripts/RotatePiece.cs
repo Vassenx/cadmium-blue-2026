@@ -47,7 +47,7 @@ public class RotatePiece : MonoBehaviour
             
             
             Vector3 dir = transform.position - circleOrigin;
-            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            Quaternion rot = Quaternion.AngleAxis(neg * 22.5f, Vector3.up);
             dir = rot * dir;
             pieceTransform.transform.position = circleOrigin + dir;
             pieceTransform.rotation = rot * transform.rotation;
@@ -166,7 +166,7 @@ public class RotatePiece : MonoBehaviour
         {
             //pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
             Vector3 dir = transform.position - circleOrigin;
-            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            Quaternion rot = Quaternion.AngleAxis(-22.5f, Vector3.up);
             dir = rot * dir;
             pieceTransform.transform.position = circleOrigin + dir;
             pieceTransform.rotation = rot * transform.rotation;
@@ -198,7 +198,8 @@ public class RotatePiece : MonoBehaviour
         while (verticalTimer > 0)
         {
             timer = 5;
-            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f * 0.02f, 0);
+            float scaling = completeAction == "STARTSCENE" ? 1 : 0.02f;
+            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f * scaling, 0);
             verticalTimer--;
             yield return new WaitForSeconds(.05f);
         }

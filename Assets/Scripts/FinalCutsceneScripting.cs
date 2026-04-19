@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class FinalCutsceneScripting : MonoBehaviour
@@ -10,18 +11,24 @@ public class FinalCutsceneScripting : MonoBehaviour
     public GameObject spear2;
     public GameObject spear3;
     public GameObject wolfPastor;
+    public GameObject altar;
     public GameObject flock;
+    public PlayerMovementController pmc;
+    bool started = false;
 
-    void Start()
-    {
-        // TODO: CHANGE THIS TO RUN AFTER PLAYER HITS COLLIDER ON WALK BACK TO DOOR
-        PlayCutscene();
-    }
+    public CinemachineClearShot pastorCam;
+    public GameObject playerCam;
 
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider other)
     {
-        if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted) return;
-        PlayCutscene();
+            if(other.gameObject.tag == "Player")
+        {
+            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
+            started = true;
+            pmc.movementEnabled = false;
+            PlayCutscene();   
+        }
     }
 
     public void PlayCutscene()
@@ -31,26 +38,27 @@ public class FinalCutsceneScripting : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        altar.GetComponent<AudioSource>().Play();
         SpearController sp1c = spear1.GetComponent<SpearController>();
         SpearController sp2c = spear2.GetComponent<SpearController>();
         SpearController sp3c = spear3.GetComponent<SpearController>();
         sp1c.LiftSpear(1);
         sp2c.LiftSpear(1);
-        sp3c.LiftSpear(70);
-        yield return new WaitForSeconds(8);
+        sp3c.LiftSpear(120);
+        yield return new WaitForSeconds(15);
         spear2.GetComponent<AudioSource>().Play();
         sp1c.LowerSpear(5);
         sp2c.LowerSpear(5);
         sp3c.LowerSpear(5);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         wolfPastor.SetActive(true);
         wolfPastor.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds (2);
+        yield return new WaitForSeconds (5);
         flock.SetActive(true);
-        yield return new WaitForSeconds(10);
-        // TURN CAMERA AND ZOOM INTO PASTOR
-        // PLAY PASTOR DIALOGUE
-        // ZOOM BACK OUT FROM PASTOR
+        yield return new WaitForSeconds(5);
+        playerCam.SetActive(false);
+        pastorCam.gameObject.SetActive(true);
+        Debug.Log("testpastor cam");
         yield return new WaitForSeconds(4);
         // JUMPSCARE WITH STING
         yield return new WaitForSeconds(4);
