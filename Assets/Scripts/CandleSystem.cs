@@ -16,6 +16,8 @@ public class CandleSystem : MonoBehaviour
     [SerializeField] private AudioClip snuffOutCandleAudioClip;
     [SerializeField] private AudioClip lightCandleAudioClip;
     [SerializeField] private GameObject firstpersonCam;
+    [SerializeField] private GameObject flame1;
+    [SerializeField] private GameObject flame2;
 
     [SerializeField] private TextMeshProUGUI candleTutorialText;
 
@@ -60,6 +62,9 @@ public class CandleSystem : MonoBehaviour
         // update light
         candleLight.intensity =0;
         
+        flame1.SetActive(false);
+        flame2.SetActive(false);
+        
         glowingCandle = false;
         dimmingCandle = false;
         isCandleOn = false;
@@ -103,6 +108,8 @@ public class CandleSystem : MonoBehaviour
         // if not already on and not already in the process of dimming
         if (!isCandleOn && !dimmingCandle)
         {
+            flame1.SetActive(true);
+            flame2.SetActive(true);
             audioSource.PlayOneShot(lightCandleAudioClip);
             StartMovingCandle();
             glowingCandle = true;
@@ -114,6 +121,9 @@ public class CandleSystem : MonoBehaviour
         // if the candle is on and not already in the process of glowing
         if (isCandleOn && !glowingCandle)
         {
+            flame1.SetActive(false);
+            flame2.SetActive(false);
+            
             audioSource.PlayOneShot(snuffOutCandleAudioClip);
             
             dimmingCandle = true;
