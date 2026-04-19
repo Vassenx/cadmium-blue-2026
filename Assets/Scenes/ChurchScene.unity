@@ -1840,7 +1840,7 @@ PrefabInstance:
       objectReference: {fileID: 1119887416}
     - target: {fileID: 4927162072813713958, guid: 9e5f6c1716dbf4473a79ae4a70bc0138, type: 3}
       propertyPath: beastTimer
-      value: 30
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 4927162072813713958, guid: 9e5f6c1716dbf4473a79ae4a70bc0138, type: 3}
       propertyPath: audioSource
@@ -2720,6 +2720,14 @@ PrefabInstance:
       propertyPath: cameraSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4551563132956402710, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_Range
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551563132956402710, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4738767212496365871, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -2858,7 +2866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3265,6 +3273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4efe6db0c4f8cd24faab1d43ca48caec, type: 2}
     - target: {fileID: 919132149155446097, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
       propertyPath: m_Name
       value: BirdBathExtDecim (1)
@@ -3272,6 +3284,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.91161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.91161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.91161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.092
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9411,6 +9439,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4efe6db0c4f8cd24faab1d43ca48caec, type: 2}
     - target: {fileID: 919132149155446097, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
       propertyPath: m_Name
       value: BirdBathExtDecim
@@ -9418,6 +9450,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92045
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.92045
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.92045
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.035
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14639,6 +14687,26 @@ PrefabInstance:
     - target: {fileID: 6139555634237819982, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180344609903396003, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180344609903396003, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868820527162301179, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868820527162301179, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868820527162301179, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.43
       objectReference: {fileID: 0}
     - target: {fileID: 7211340338994465357, guid: d194970f151425f91a0cdd9f612a0f65, type: 3}
       propertyPath: m_Enabled
@@ -24478,12 +24546,41 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2487851462655252897, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487851462655252897, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624639567193984532, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634009846136848678, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634009846136848678, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5996662106079625328, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6089434154038051713, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089434154038051713, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1542233660307071503, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 697333906805236039, guid: 0db509b0044e705df82b46ee28b9af85, type: 3}
       insertIndex: -1
@@ -25628,6 +25725,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4efe6db0c4f8cd24faab1d43ca48caec, type: 2}
     - target: {fileID: 919132149155446097, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
       propertyPath: m_Name
       value: BirdBathExtDecim (2)
@@ -25635,6 +25736,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.89393
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.89393
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: f8865ceeba8ac5f63980273c58c6eff6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.89393
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

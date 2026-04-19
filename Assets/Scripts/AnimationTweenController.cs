@@ -16,10 +16,10 @@ public class AnimationTweenController : MonoBehaviour {
         Sequence babyShake = DOTween.Sequence();
         babyShake.Append(
                 transform.DORotate(
-                    new Vector3(0, 50, 0), 0.1f
+                    new Vector3(0, 15, 0), 0.2f
                 )).Append(
             transform.DORotate(
-                new Vector3(0, -50, 0), 0.1f
+                new Vector3(0, -15, 0), 0.2f
             )).SetAs(tParams);
     }
     

@@ -18,7 +18,7 @@ public class PoemScript : MonoBehaviour
     IEnumerator OnEsacpe()
     {
         
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(10f);
         
         poemObject.SetActive(false);
 
