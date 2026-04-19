@@ -75,8 +75,8 @@ public class PlayerMovementController : MonoBehaviour
 
     void HandleRotation()
     {
-        float mouseX = InputHandler.Instance.cameraMovementVector2.x * cameraSpeed;
-        float mouseY = InputHandler.Instance.cameraMovementVector2.y * cameraSpeed;
+        float mouseX = InputHandler.Instance.cameraMovementVector2.x * cameraSpeed * Time.deltaTime;
+        float mouseY = InputHandler.Instance.cameraMovementVector2.y * cameraSpeed * Time.deltaTime;
         
         //camYaw = ClampAngle(camYaw, float.MinValue, float.MaxValue);
         //camPitch = ClampAngle(camPitch, this.minAngle, this.maxAngle);
