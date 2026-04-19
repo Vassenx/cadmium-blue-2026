@@ -16,6 +16,8 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] LayerMask interactableLayer;
     //just for debugging
     private Vector3 gizmosVector;
+
+    public bool isInteracting = false;
     
     
     //Action is E
@@ -27,12 +29,29 @@ public class PlayerActionController : MonoBehaviour
         
     }
     
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Interactable") && other.GetComponent<PuzzleTransitionManager>().isCompleted == false)
+        {
+            currentPuzzle = other.gameObject;
+            other.gameObject.GetComponent<PuzzleTransitionManager>().TriggerPuzzleTransition();
+        }
+    }
+
+    void Update()
+    {
+
+        
+    }
+
     private void FixedUpdate()
     {
+        /*
         if (gameObject.GetComponent<PlayerMovementController>().movementEnabled && interactAction.IsPressed())
         {
             TriggerRayCast();   
         }
+        */
     }
 
     void TriggerRayCast()
@@ -44,8 +63,11 @@ public class PlayerActionController : MonoBehaviour
             {
                     if (hit.transform.gameObject.TryGetComponent(out PuzzleTransitionManager transitionManager))
                     {
-                        currentPuzzle = hit.transform.gameObject;
-                        transitionManager.TriggerPuzzleTransition();
+                        if (!transitionManager.isCompleted)
+                        {
+                            currentPuzzle = hit.transform.gameObject;
+                            transitionManager.TriggerPuzzleTransition();   
+                        }
                     }
             }
         }
