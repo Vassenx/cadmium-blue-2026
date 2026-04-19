@@ -60,7 +60,7 @@ public class ScareManager : MonoBehaviour
             
             if (beastTimer <= 0.0f)
             {
-                if (theBeast.activeSelf == false && playerActionController.currentPuzzle.GetComponent<PuzzleTransitionManager>().isCompleted)
+                if (theBeast.activeSelf == false && !playerActionController.currentPuzzle.GetComponent<PuzzleTransitionManager>().isCompleted)
                 {
                     TriggerBeastSound();
                     theBeast.SetActive(true);
@@ -87,7 +87,8 @@ public class ScareManager : MonoBehaviour
     public void TriggerScare()
     {
         //TODO
-        scareObjects[0].SetActive(true);
+        //scareObjects[0].SetActive(true);
+        Debug.Log("pass");
     }
 
     public void TriggerBeastSound()
@@ -109,8 +110,9 @@ public class ScareManager : MonoBehaviour
 
     void RandomSoundsTrigger()
     {
-        int randIndex = Random.RandomRange(0, ambianceSounds.audioClips.Count);
-        audioSource.PlayOneShot(ambianceSounds.audioClips[randIndex]);
-        randomSoundTimer = ambianceTracker;
+       // int randIndex = Random.RandomRange(0, ambianceSounds.audioClips.Count);
+       // audioSource.PlayOneShot(ambianceSounds.audioClips[randIndex]);
+       // randomSoundTimer = ambianceTracker;
+       Debug.Log("pass");
     }
 }

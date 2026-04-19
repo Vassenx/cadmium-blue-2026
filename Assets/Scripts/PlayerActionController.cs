@@ -11,7 +11,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField]
     private float maxAimDistance = 5f;
 
-    public GameObject currentPuzzle;
+    public GameObject currentPuzzle = null;
     
     [SerializeField] LayerMask interactableLayer;
     //just for debugging
@@ -40,16 +40,14 @@ public class PlayerActionController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, maxAimDistance, interactableLayer))
         {
-            Debug.Log("debug");
             if (hit.transform.CompareTag("Interactable"))
             {
-                Debug.Log("interact");
                 if(interactAction.IsPressed())
                 {
                     if (hit.transform.gameObject.TryGetComponent(out PuzzleTransitionManager transitionManager))
                     {
-                        transitionManager.TriggerPuzzleTransition();
                         currentPuzzle = hit.transform.gameObject;
+                        transitionManager.TriggerPuzzleTransition();
                     }
                 }
             }
