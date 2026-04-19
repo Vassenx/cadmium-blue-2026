@@ -3,16 +3,24 @@ using UnityEngine;
 
 public class FinalCutsceneScripting : MonoBehaviour
 {
+    public PuzzleTransitionManager puzzle1;
+    public PuzzleTransitionManager puzzle2;
+    public PuzzleTransitionManager puzzle3;
     public GameObject spear1;
     public GameObject spear2;
     public GameObject spear3;
     public GameObject wolfPastor;
     public GameObject flock;
-    // TODO: Audio and music
 
     void Start()
     {
         // TODO: CHANGE THIS TO RUN AFTER PLAYER HITS COLLIDER ON WALK BACK TO DOOR
+        PlayCutscene();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted) return;
         PlayCutscene();
     }
 
@@ -40,13 +48,16 @@ public class FinalCutsceneScripting : MonoBehaviour
         yield return new WaitForSeconds (2);
         flock.SetActive(true);
         yield return new WaitForSeconds(10);
-        // TURN CAMERA
+        // TURN CAMERA AND ZOOM INTO PASTOR
         // PLAY PASTOR DIALOGUE
+        // ZOOM BACK OUT FROM PASTOR
+        yield return new WaitForSeconds(4);
         // JUMPSCARE WITH STING
         yield return new WaitForSeconds(4);
         // PAN UP TO DARK CEILING
         // FADE TO BLACK
-        // CREDITS
+        yield return new WaitForSeconds(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
         yield return null;
     }
 }

@@ -2844,6 +2844,14 @@ PrefabInstance:
       propertyPath: m_ControllerManager.Controllers.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2735728714230682168, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2735728714230682168, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2979203211896123519, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2855,6 +2863,14 @@ PrefabInstance:
     - target: {fileID: 4048053401483045342, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161442155801920694, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_Center.x
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161442155801920694, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_Center.z
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 4328914952171582053, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_ClearFlags
@@ -3024,7 +3040,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 247815376393234713, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6550884876898705322, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
     - {fileID: 9197207049875495176, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
@@ -5547,6 +5576,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleTransitionManager
   isCompleted: 0
+  OnPuzzleTransition:
+    m_PersistentCalls:
+      m_Calls: []
   shrines: []
   puzzleCam: {fileID: 1030943298}
   playerCam: {fileID: 369772204}
@@ -9884,11 +9916,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleTransitionManager
   isCompleted: 0
+  OnPuzzleTransition:
+    m_PersistentCalls:
+      m_Calls: []
   shrines: []
   puzzleCam: {fileID: 1089307488}
   playerCam: {fileID: 601597482}
   player: {fileID: 209130241}
-  wolf: {fileID: 1887055704}
+  wolf: {fileID: 0}
   sheep: {fileID: 1887055703}
 --- !u!135 &663617867
 SphereCollider:
@@ -14621,6 +14656,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleTransitionManager
   isCompleted: 0
+  OnPuzzleTransition:
+    m_PersistentCalls:
+      m_Calls: []
   shrines: []
   puzzleCam: {fileID: 1345706805}
   playerCam: {fileID: 601597482}
@@ -29480,17 +29518,6 @@ PrefabInstance:
 --- !u!114 &1887055703 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3915797540663047848, guid: f48278147c17671f68dcd8f820e8a770, type: 3}
-  m_PrefabInstance: {fileID: 1887055701}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a65dd32ac1a7fc489f44e35c26329c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotatePiece
---- !u!114 &1887055704 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3502154287758632629, guid: f48278147c17671f68dcd8f820e8a770, type: 3}
   m_PrefabInstance: {fileID: 1887055701}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

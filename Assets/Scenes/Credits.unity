@@ -421,11 +421,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreditsScrolling
   text: {fileID: 9036355}
-  candle: {fileID: 1820620402}
-  sheep: {fileID: 1060473902}
   wolf: {fileID: 0}
+  sheep: {fileID: 1060473902}
+  candle: {fileID: 1820620402}
   sheepPile: {fileID: 0}
   title: {fileID: 0}
+  audioSource: {fileID: 2048357172}
 --- !u!1 &319639118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,10 +2059,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2540270269317355080, guid: 91e6196a223a27442a92de2f31e1f32e, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6e90a19fa8bedb748bd659bb9e9510aa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

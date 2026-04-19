@@ -9,7 +9,7 @@ public class PuzzleTransitionManager : MonoBehaviour
 {
     [Header("Win Condition")] [SerializeField]
     //the puzzle script should enable this and call endpuzzlefunction
-    private bool isCompleted = false;
+    public bool isCompleted = false;
 
     public UnityEvent<bool> OnPuzzleTransition; // true = switch to puzzle, false = switch back to main
     
