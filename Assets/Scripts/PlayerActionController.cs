@@ -29,7 +29,6 @@ public class PlayerActionController : MonoBehaviour
     {
         if (gameObject.GetComponent<PlayerMovementController>().movementEnabled)
         {
-            Debug.Log("tioitr");
             TriggerRayCast();   
         }
     }
@@ -37,9 +36,9 @@ public class PlayerActionController : MonoBehaviour
     void TriggerRayCast()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.transform.position, Vector3.forward, out hit, maxAimDistance, interactableLayer))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, maxAimDistance, interactableLayer))
         {
-            Debug.Log("hit");
+            Debug.Log("debug");
             if (hit.transform.CompareTag("Interactable"))
             {
                 Debug.Log("interact");
