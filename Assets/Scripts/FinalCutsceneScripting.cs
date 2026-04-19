@@ -24,7 +24,7 @@ public class FinalCutsceneScripting : MonoBehaviour
     {
             if(other.gameObject.tag == "Player")
         {
-            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
+            if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
             started = true;
             pmc.movementEnabled = false;
             PlayCutscene();   
