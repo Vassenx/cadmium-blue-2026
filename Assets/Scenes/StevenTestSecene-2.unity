@@ -1626,7 +1626,10 @@ MonoBehaviour:
   targetZones: 0a000000
   pairedPiece: {fileID: 617636033}
   completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
+  lunge: {fileID: 0}
 --- !u!136 &353075405
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2803,6 +2806,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 919074782166985569, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.16999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 919074782166985569, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.10000038
+      objectReference: {fileID: 0}
     - target: {fileID: 2943480922947570384, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: a
       value: 
@@ -2837,11 +2848,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463316900710079854, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: cameraSpeed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5156138341477309915, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270865802426405804, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.16999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270865802426405804, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.10000038
       objectReference: {fileID: 0}
     - target: {fileID: 7874680432476109700, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3105,7 +3124,10 @@ MonoBehaviour:
   targetZones: 02000000
   pairedPiece: {fileID: 353075404}
   completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
+  lunge: {fileID: 0}
 --- !u!136 &617636034
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3966,7 +3988,10 @@ MonoBehaviour:
   targetZones: 02000000
   pairedPiece: {fileID: 776703686}
   completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
+  lunge: {fileID: 0}
 --- !u!136 &722158089
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4677,7 +4702,10 @@ MonoBehaviour:
   targetZones: 0a000000
   pairedPiece: {fileID: 722158088}
   completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
+  lunge: {fileID: 0}
 --- !u!136 &776703687
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5357,7 +5385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &908655558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,8 +5398,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101ab058c10be44b3934a152d9e834cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScareManager
+  audioSource: {fileID: 0}
   scareObjects:
   - {fileID: 1770079082}
+  audioCues: []
+  beastAudioCues: []
+  player: {fileID: 0}
 --- !u!4 &908655559
 Transform:
   m_ObjectHideFlags: 0
@@ -6175,7 +6207,10 @@ MonoBehaviour:
   targetZones: 02000000
   pairedPiece: {fileID: 1206058915}
   completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
+  lunge: {fileID: 0}
 --- !u!136 &1024848044
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6845,7 +6880,10 @@ MonoBehaviour:
   targetZones: 0a000000
   pairedPiece: {fileID: 1024848043}
   completeAction: 
+  isOuter: 0
+  isComplete: 0
   settingsMenu: {fileID: 0}
+  lunge: {fileID: 0}
 --- !u!136 &1206058916
 CapsuleCollider:
   m_ObjectHideFlags: 0
