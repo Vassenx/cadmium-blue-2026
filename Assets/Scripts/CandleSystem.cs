@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,14 +17,22 @@ public class CandleSystem : MonoBehaviour
     
     [SerializeField] private float dimDuration = 0.1f;
     [SerializeField] private float glowDuration = 1f;
+
+    [SerializeField] private float waitTilMoveCandleBack = 0.5f;
+
+    private Vector3 goalPosition;
+    private bool readyToRelightCandle = false;
     private float elapsedTime;
     private bool isCandleOn = true;
     private bool dimmingCandle = false;
     private bool glowingCandle = false;
     private float originalLightIntensity;
+
+    private Vector3 originalLocation;
     
     void Start()
     {
+        originalLocation = transform.localPosition;
         InputHandler.Instance.CandleButtonHeld.AddListener(OnCandleHoldInput);
         InputHandler.Instance.CandleButtonPressed.AddListener(OnCandlePressInput);
 
@@ -42,6 +52,8 @@ public class CandleSystem : MonoBehaviour
         else if (glowingCandle)
         {
             LerpCandleInternal(true);
+
+            LerpCandleMovement();
         }
     }
 
@@ -64,6 +76,7 @@ public class CandleSystem : MonoBehaviour
         if (!isCandleOn && !dimmingCandle)
         {
             audioSource.PlayOneShot(lightCandleAudioClip);
+            StartMovingCandle();
             glowingCandle = true;
         }
     }
@@ -74,7 +87,9 @@ public class CandleSystem : MonoBehaviour
         if (isCandleOn && !glowingCandle)
         {
             audioSource.PlayOneShot(snuffOutCandleAudioClip);
+            
             dimmingCandle = true;
+            readyToRelightCandle = false;
         }
     }
 
@@ -93,6 +108,10 @@ public class CandleSystem : MonoBehaviour
     private void LerpCandleInternal(bool toggleOn)
     {
         float duration = toggleOn ? glowDuration : dimDuration;
+        if (toggleOn && !readyToRelightCandle)
+        {
+            return;
+        }
         
         if (elapsedTime < duration)
         {
@@ -123,6 +142,35 @@ public class CandleSystem : MonoBehaviour
             dimmingCandle = false;
             isCandleOn = toggleOn;
             playerMovementController.movementEnabled = true;
+        }
+    }
+    
+    private void StartMovingCandle()
+    {
+        StartCoroutine(MoveCandle());
+    }
+
+    IEnumerator MoveCandle()
+    {
+        goalPosition = transform.localPosition + (transform.parent.parent.forward * -1f) * 50f * Time.deltaTime; // backwards
+
+        yield return new WaitForSeconds(waitTilMoveCandleBack);
+        readyToRelightCandle = true;
+
+        goalPosition = originalLocation; // forwards
+
+    }
+    
+    private void LerpCandleMovement()
+    {
+        if (!goalPosition.AlmostZero())
+        {
+            gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, goalPosition, 0.1f);
+        }
+
+        if (Vector3.Distance(transform.localPosition, goalPosition) < 0.001f)
+        {
+            goalPosition = Vector3.zero;
         }
     }
 }
