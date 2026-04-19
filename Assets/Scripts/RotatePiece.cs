@@ -22,6 +22,7 @@ public class RotatePiece : MonoBehaviour
 
     //Disaster jank
     public GameObject settingsMenu = null;
+    public WolfFigLunge lunge = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -101,7 +102,18 @@ public class RotatePiece : MonoBehaviour
                 }
                 if (completeAction == "PUZZLE1")
                 {
+                    lunge.Lunge();
+                    pairedPiece.enabled = false;
+                    gameObject.GetComponent<RotatePiece>().enabled = false;
                     // TODO: SET PUZZLE1 IS COMPLETE
+                }
+                if (completeAction == "PUZZLE2")
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    pairedPiece.enabled = false;
+                    gameObject.GetComponent<RotatePiece>().enabled = false;
+                    // TODO: SET PUZZLE2 IS COMPLETE
                 }
             }
         }
