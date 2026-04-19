@@ -113,6 +113,5 @@ public class ScareManager : MonoBehaviour
        // int randIndex = Random.RandomRange(0, ambianceSounds.audioClips.Count);
        // audioSource.PlayOneShot(ambianceSounds.audioClips[randIndex]);
        // randomSoundTimer = ambianceTracker;
-       Debug.Log("pass");
     }
 }
