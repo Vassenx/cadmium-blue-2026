@@ -160,6 +160,8 @@ MonoBehaviour:
   isOuter: 0
   isComplete: 0
   settingsMenu: {fileID: 583054017}
+  lunge: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!136 &259114538
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1312,6 +1314,8 @@ MonoBehaviour:
   isOuter: 1
   isComplete: 0
   settingsMenu: {fileID: 583054017}
+  lunge: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!136 &1151036276
 CapsuleCollider:
   m_ObjectHideFlags: 0

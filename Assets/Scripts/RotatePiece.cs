@@ -23,7 +23,6 @@ public class RotatePiece : MonoBehaviour
     //Disaster jank
     public GameObject settingsMenu = null;
     public WolfFigLunge lunge = null;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -78,7 +77,8 @@ public class RotatePiece : MonoBehaviour
                         }
                         else if ((positionChange > 0 && positionChange == targetZones[0]) || (positionChange < 0 && (16 - Math.Abs(positionChange)) == targetZones[0]))
                         {
-                            // TODO: START GAME
+                            // TODO: Swap this out for our custom SceneManager if desired
+                            UnityEngine.SceneManagement.SceneManager.LoadScene("ChurchScene");
                         }
                     }
                     else if (pairedPiece.targetZones.Length > 2
@@ -96,7 +96,7 @@ public class RotatePiece : MonoBehaviour
                         }
                         else if ((pairedPiece.positionChange > 0 && (pairedPiece.positionChange == pairedPiece.targetZones[0])) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[0]))
                         {
-                            // TODO: START GAME
+                            UnityEngine.SceneManagement.SceneManager.LoadScene("ChurchScene");
                         }
                     }
                 }
