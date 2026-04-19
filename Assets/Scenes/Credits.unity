@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreditsScrolling
   text: {fileID: 9036355}
-  wolf: {fileID: 662229345}
+  wolf: {fileID: 1227971104}
   sheep: {fileID: 1060473902}
   candle: {fileID: 1247313882}
   sheepPile: {fileID: 2013143820}
@@ -997,68 +997,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640284666}
   m_Mesh: {fileID: 8233857196053963358, guid: 0029a24f14120420dadab29f9f7a19c0, type: 3}
---- !u!1001 &662229344
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.058275014
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.14591496
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.98723745
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.02598444
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 3.917
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -186.185
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 16.603
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-      propertyPath: m_Name
-      value: WolfSitting
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
---- !u!1 &662229345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5869cfa436e429b448169be6b9c03c4e, type: 3}
-  m_PrefabInstance: {fileID: 662229344}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &744494798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1472,68 @@ Transform:
   - {fileID: 1905543341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1227971103
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.058275014
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.14591496
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.98723745
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02598444
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 3.917
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -186.185
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 16.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+      propertyPath: m_Name
+      value: WolfSitting (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+--- !u!1 &1227971104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b61320135a242bcbbd0382a31cddd90, type: 3}
+  m_PrefabInstance: {fileID: 1227971103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247313882
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,4 +4022,4 @@ SceneRoots:
   - {fileID: 1060473903}
   - {fileID: 2048357173}
   - {fileID: 2013143821}
-  - {fileID: 662229344}
+  - {fileID: 1227971103}
