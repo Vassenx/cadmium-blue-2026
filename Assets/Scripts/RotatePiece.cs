@@ -105,7 +105,7 @@ public class RotatePiece : MonoBehaviour
                     lunge.Lunge();
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    // TODO: SET PUZZLE1 IS COMPLETE
+                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
                 }
                 if (completeAction == "PUZZLE2")
                 {
@@ -113,7 +113,7 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    // TODO: SET PUZZLE2 IS COMPLETE
+                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
                 }
                 if (completeAction == "PUZZLE3")
                 {
@@ -121,7 +121,8 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    // TODO: SET PUZZLE3 IS COMPLETE
+                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+
                 }
             }
         }
