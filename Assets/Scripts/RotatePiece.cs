@@ -10,7 +10,7 @@ public class RotatePiece : MonoBehaviour
     InputAction puzzleAction;
     public int positionChange = 0;
     public Transform circle;
-    Vector2 circleOrigin;
+    Vector3 circleOrigin;
     public bool leftControls = true;
     float timer = 5;
     bool resetting = false;
@@ -44,7 +44,16 @@ public class RotatePiece : MonoBehaviour
             float neg = puzzleAction.ReadValue<float>();
             positionChange += (int)neg;
             if (Math.Abs(positionChange) == 16) positionChange = 0;
-            pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
+            
+            
+            Vector3 dir = transform.position - circleOrigin;
+            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            dir = rot * dir;
+            pieceTransform.transform.position = circleOrigin + dir;
+            pieceTransform.rotation = rot * transform.rotation;
+            
+            
+            //pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
 
             if (((positionChange > 0 && targetZones.Contains(positionChange))
             || (positionChange < 0 && targetZones.Contains(16 - Math.Abs(positionChange))))
@@ -105,7 +114,7 @@ public class RotatePiece : MonoBehaviour
                     lunge.Lunge();
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
                 }
                 if (completeAction == "PUZZLE2")
                 {
@@ -113,7 +122,7 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
                 }
                 if (completeAction == "PUZZLE3")
                 {
@@ -121,7 +130,7 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
 
                 }
             }
@@ -150,13 +159,27 @@ public class RotatePiece : MonoBehaviour
         }
         while (positionChange > 0 && resetting)
         {
-            pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
+            //pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
+            Vector3 dir = transform.position - circleOrigin;
+            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            dir = rot * dir;
+            pieceTransform.transform.position = circleOrigin + dir;
+            pieceTransform.rotation = rot * transform.rotation;
+            
             positionChange--;
             yield return new WaitForSeconds(.75f);
         }
         while (positionChange < 0 && resetting)
         {
-            pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f);
+            //pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f);
+            
+            Vector3 dir = transform.position - circleOrigin;
+            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            dir = rot * dir;
+            pieceTransform.transform.position = circleOrigin + dir;
+            pieceTransform.rotation = rot * transform.rotation;
+            
+            
             positionChange++;
             yield return new WaitForSeconds(.75f);
         }
