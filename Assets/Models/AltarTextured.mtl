@@ -1,0 +1,7 @@
+# Exported from Nomad Sculpt
+
+newmtl Box
+ map_Kd Box_color_1.png
+ Kd 1.000000 1.000000 1.000000
+ Pr 0.250000
+ Pm 0.000000
