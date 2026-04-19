@@ -187,7 +187,7 @@ MonoBehaviour:
   positionChange: 0
   circle: {fileID: 918440268}
   leftControls: 0
-  targetZones: 0a000000
+  targetZones: 09000000
   pairedPiece: {fileID: 1151036275}
   completeAction: PUZZLE1
   isOuter: 0
