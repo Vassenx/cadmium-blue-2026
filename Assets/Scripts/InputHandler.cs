@@ -14,7 +14,8 @@ public class InputHandler : MonoBehaviour
     public bool heldCandleButton { get; private set; }
 
     public UnityEvent<bool> CandleButtonHeld;
-    
+    public UnityEvent CandleButtonPressed;
+
     //Input systems crap
     [SerializeField] private InputActionAsset playerControls;
     //This is the map we are referencing
@@ -71,6 +72,10 @@ public class InputHandler : MonoBehaviour
             if (inputEvent.interaction is HoldInteraction)
             {
                 CandleButtonHeld.Invoke(true);
+            }
+            else if (inputEvent.interaction is PressInteraction)
+            {
+                CandleButtonPressed.Invoke();
             }
         };
 

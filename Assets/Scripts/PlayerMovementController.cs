@@ -20,6 +20,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float vertLimit;
 
     public bool movementEnabled = true;
+    
+    public bool isInPuzzle = false;
 
     void Start()
     {

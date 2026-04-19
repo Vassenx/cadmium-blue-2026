@@ -28,7 +28,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -37,7 +37,7 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
@@ -117,7 +117,7 @@
                 {
                     "name": "Candle",
                     "type": "Button",
-                    "id": "a4928238-497e-4d3e-8ad3-bd26bcaa883e",
+                    "id": "0e62ca6a-baf9-4211-adc3-727516a77509",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -591,7 +591,7 @@
                     "name": "",
                     "id": "5638412d-59c4-4569-b911-5cb189626f35",
                     "path": "<Keyboard>/ctrl",
-                    "interactions": "Hold(duration=1,pressPoint=1),Press",
+                    "interactions": "Hold(duration=1,pressPoint=1),Press,Press",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Candle",

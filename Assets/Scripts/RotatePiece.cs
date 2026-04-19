@@ -22,7 +22,7 @@ public class RotatePiece : MonoBehaviour
 
     //Disaster jank
     public GameObject settingsMenu = null;
-
+    public WolfFigLunge lunge = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,12 +30,13 @@ public class RotatePiece : MonoBehaviour
         if (leftControls)
             puzzleAction = InputSystem.actions.FindAction("PuzzleLeft");
         else puzzleAction = InputSystem.actions.FindAction("PuzzleRight");
-        circleOrigin = circle.position;
+        circleOrigin = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isOuter && isComplete && completeAction != "STARTSCENE") return;
         if (puzzleAction.WasPerformedThisFrame())
         {
             timer = 5; // Reset timer
@@ -45,8 +46,8 @@ public class RotatePiece : MonoBehaviour
             if (Math.Abs(positionChange) == 16) positionChange = 0;
             pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
 
-            if ((targetZones.Contains(positionChange)
-            || targetZones.Contains(-(16 - Math.Abs(positionChange))))
+            if (((positionChange > 0 && targetZones.Contains(positionChange))
+            || (positionChange < 0 && targetZones.Contains(16 - Math.Abs(positionChange))))
             && !isComplete)
             {
                 isComplete = true;
@@ -62,45 +63,66 @@ public class RotatePiece : MonoBehaviour
                 if (completeAction == "STARTSCENE")
                 {
                     if (targetZones.Length > 2
-                    && ((pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0]))
+                    && ((pairedPiece.positionChange > 0 && (pairedPiece.positionChange == pairedPiece.targetZones[0])) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[0])))
                     {
-                        if (positionChange == targetZones[2] || (-(16 - Math.Abs(positionChange))) == targetZones[2])
+                        if ((positionChange > 0 && positionChange == targetZones[2]) || (positionChange < 0 && (16 - Math.Abs(positionChange)) == targetZones[2]))
                         {
                             Application.Quit();
                         }
-                        else if (positionChange == targetZones[1] || (-(16 - Math.Abs(positionChange))) == targetZones[1])
+                        else if ((positionChange > 0 && positionChange == targetZones[1]) || (positionChange < 0 && (16 - Math.Abs(positionChange)) == targetZones[1]))
                         {
                             settingsMenu.SetActive(true);
                             pairedPiece.enabled = false;
                             gameObject.GetComponent<RotatePiece>().enabled = false;
                         }
-                        else if (positionChange == targetZones[0] || (-(16 - Math.Abs(positionChange))) == targetZones[0])
+                        else if ((positionChange > 0 && positionChange == targetZones[0]) || (positionChange < 0 && (16 - Math.Abs(positionChange)) == targetZones[0]))
                         {
-                            // TODO: START GAME
+                            // TODO: Swap this out for our custom SceneManager if desired
+                            UnityEngine.SceneManagement.SceneManager.LoadScene("ChurchScene");
                         }
                     }
                     else if (pairedPiece.targetZones.Length > 2
-                    && (positionChange == targetZones[0] || (-(16 - Math.Abs(positionChange))) == targetZones[0]))
+                    && ((positionChange > 0 && positionChange == targetZones[0]) || (positionChange < 0 && (16 - Math.Abs(positionChange)) == targetZones[0])))
                     {
-                        if ((pairedPiece.positionChange == pairedPiece.targetZones[2]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[2])
+                        if ((pairedPiece.positionChange > 0 && pairedPiece.positionChange == pairedPiece.targetZones[2]) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[2]))
                         {
                             Application.Quit();
                         }
-                        else if ((pairedPiece.positionChange == pairedPiece.targetZones[1]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[1])
+                        else if ((pairedPiece.positionChange > 0 && pairedPiece.positionChange == pairedPiece.targetZones[1]) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[1]))
                         {
                             settingsMenu.SetActive(true);
                             pairedPiece.enabled = false;
                             gameObject.GetComponent<RotatePiece>().enabled = false;
                         }
-                        else if ((pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0])
+                        else if ((pairedPiece.positionChange > 0 && (pairedPiece.positionChange == pairedPiece.targetZones[0])) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[0]))
                         {
-                            // TODO: START GAME
+                            UnityEngine.SceneManagement.SceneManager.LoadScene("ChurchScene");
                         }
                     }
                 }
                 if (completeAction == "PUZZLE1")
                 {
-                    // TODO: SET PUZZLE1 IS COMPLETE
+                    lunge.Lunge();
+                    pairedPiece.enabled = false;
+                    gameObject.GetComponent<RotatePiece>().enabled = false;
+                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                }
+                if (completeAction == "PUZZLE2")
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    pairedPiece.enabled = false;
+                    gameObject.GetComponent<RotatePiece>().enabled = false;
+                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                }
+                if (completeAction == "PUZZLE3")
+                {
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    pairedPiece.enabled = false;
+                    gameObject.GetComponent<RotatePiece>().enabled = false;
+                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+
                 }
             }
         }
@@ -150,7 +172,7 @@ public class RotatePiece : MonoBehaviour
             timer = 5;
             gameObject.transform.parent.transform.position += new Vector3(0, 0.25f, 0);
             verticalTimer--;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
         }
         yield return null;
     }

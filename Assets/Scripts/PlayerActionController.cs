@@ -27,28 +27,29 @@ public class PlayerActionController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        TriggerRayCast();
+        if (gameObject.GetComponent<PlayerMovementController>().movementEnabled)
+        {
+            TriggerRayCast();   
+        }
     }
 
     void TriggerRayCast()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.transform.position, Vector3.forward, out hit, maxAimDistance, interactableLayer))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, maxAimDistance, interactableLayer))
         {
+            Debug.Log("debug");
             if (hit.transform.CompareTag("Interactable"))
             {
-                debugObject.SetActive(true);
+                Debug.Log("interact");
                 if(interactAction.IsPressed())
                 {
-                    Debug.Log("Interact");
-                    ScareManager scareManager = FindObjectOfType<ScareManager>();
-                    scareManager.TriggerScare();
+                    if (hit.transform.gameObject.TryGetComponent(out PuzzleTransitionManager transitionManager))
+                    {
+                        transitionManager.TriggerPuzzleTransition();
+                    }
                 }
             }
-        }
-        else
-        {
-            debugObject.SetActive(false);
         }
     }
 
