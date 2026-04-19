@@ -15,7 +15,7 @@ public class CandleSystem : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip snuffOutCandleAudioClip;
     [SerializeField] private AudioClip lightCandleAudioClip;
-    [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject firstpersonCam;
 
     [SerializeField] private TextMeshProUGUI candleTutorialText;
 
@@ -84,7 +84,7 @@ public class CandleSystem : MonoBehaviour
     {
         if (inputSuccess)
         {
-            if (!candleTutorialText.gameObject.activeSelf)
+            if (candleTutorialText.gameObject.activeSelf)
             {
                 candleTutorialText.gameObject.SetActive(false);
             }
@@ -180,8 +180,8 @@ public class CandleSystem : MonoBehaviour
 
     IEnumerator MoveCandle()
     {
-        Vector3 camForward = camera.transform.forward;
-        Vector3 localCamForward = camera.transform.InverseTransformDirection(camForward);
+        Vector3 camForward = firstpersonCam.transform.forward;
+        Vector3 localCamForward = firstpersonCam.transform.InverseTransformDirection(camForward);
         goalPosition = transform.localPosition + (localCamForward * -1f) * 50f * Time.deltaTime; // backwards
 
         yield return new WaitForSeconds(waitTilMoveCandleBack);
