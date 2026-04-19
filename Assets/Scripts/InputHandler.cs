@@ -3,6 +3,7 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using Vector2 = UnityEngine.Vector2;
 
 public class InputHandler : MonoBehaviour
@@ -65,7 +66,13 @@ public class InputHandler : MonoBehaviour
         mouseDeltaAction.performed += inputEvent => cameraMovementVector2 = inputEvent.ReadValue<Vector2>();
         mouseDeltaAction.canceled += inputEvent => cameraMovementVector2 = Vector2.zero;
 
-        candleAction.performed += inputEvent => CandleButtonHeld.Invoke(true);
+        candleAction.performed += inputEvent =>
+        {
+            if (inputEvent.interaction is HoldInteraction)
+            {
+                CandleButtonHeld.Invoke(true);
+            }
+        };
 
         candleAction.canceled += inputEvent => CandleButtonHeld.Invoke(false);
         

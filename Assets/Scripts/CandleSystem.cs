@@ -10,7 +10,8 @@ public class CandleSystem : MonoBehaviour
     [SerializeField] private Light candleLight;
     [SerializeField] private ParticleSystemRenderer candleFlameRenderer;
     
-    [SerializeField] private float duration = 4f;
+    [SerializeField] private float dimDuration = 0.1f;
+    [SerializeField] private float glowDuration = 1f;
     private float elapsedTime;
     private bool isCandleOn = true;
     private bool dimmingCandle = false;
@@ -19,8 +20,8 @@ public class CandleSystem : MonoBehaviour
     
     void Start()
     {
-        InputHandler.Instance.CandleButtonHeld.AddListener(OnCandleInput);
-        
+        InputHandler.Instance.CandleButtonHeld.AddListener(OnCandleHoldInput);
+
         originalLightIntensity = candleLight.intensity;
         isCandleOn = true;
 
@@ -40,7 +41,7 @@ public class CandleSystem : MonoBehaviour
         }
     }
 
-    public void OnCandleInput(bool inputSuccess)
+    public void OnCandleHoldInput(bool inputSuccess)
     {
         if (inputSuccess)
         {
@@ -80,6 +81,8 @@ public class CandleSystem : MonoBehaviour
     
     private void LerpCandleInternal(bool toggleOn)
     {
+        float duration = toggleOn ? glowDuration : dimDuration;
+        
         if (elapsedTime < duration)
         {
             playerMovementController.movementEnabled = false;
@@ -99,7 +102,7 @@ public class CandleSystem : MonoBehaviour
         {
             // update mat
             Color oldColor = candleFlameRenderer.sharedMaterial.color;
-            candleFlameRenderer.sharedMaterial.color = new Color(oldColor.r, oldColor.g, oldColor.b, 0);
+            candleFlameRenderer.sharedMaterial.color = new Color(oldColor.r, oldColor.g, oldColor.b, toggleOn ? 1 : 0);
             // update light
             candleLight.intensity = toggleOn ? originalLightIntensity : 0;
             

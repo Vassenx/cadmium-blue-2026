@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1122620520826758385, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393475795929359921, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797588642668201915, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3910974840401817928, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -51,6 +63,14 @@ PrefabInstance:
     - target: {fileID: 6424351897921994958, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
       propertyPath: m_Name
       value: WallSegment Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424351897921994958, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988072072517132008, guid: fa5fbe36ad942fc4a918b4011895f76a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -132,6 +152,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 110fdbfc10cc9bd45aca75c57e676946, type: 3}
       propertyPath: m_Name
       value: WallsWindowsCutouts
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 110fdbfc10cc9bd45aca75c57e676946, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 110fdbfc10cc9bd45aca75c57e676946, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

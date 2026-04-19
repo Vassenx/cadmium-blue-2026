@@ -17,6 +17,8 @@ public class RotatePiece : MonoBehaviour
     public int[] targetZones;
     public RotatePiece pairedPiece;
     public string completeAction;
+    public bool isOuter = false;
+    public bool isComplete = false;
 
     //Disaster jank
     public GameObject settingsMenu = null;
@@ -34,6 +36,7 @@ public class RotatePiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isOuter && isComplete && completeAction != "STARTSCENE") return;
         if (puzzleAction.WasPerformedThisFrame())
         {
             timer = 5; // Reset timer
@@ -43,39 +46,63 @@ public class RotatePiece : MonoBehaviour
             if (Math.Abs(positionChange) == 16) positionChange = 0;
             pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
 
-            if ((pairedPiece.targetZones.Contains(pairedPiece.positionChange) 
-            || pairedPiece.targetZones.Contains(-(16 - Math.Abs(pairedPiece.positionChange)))) 
-            && (targetZones.Contains(positionChange)
-            || targetZones.Contains(-(16 - Math.Abs(positionChange)))))
+            if ((targetZones.Contains(positionChange)
+            || targetZones.Contains(-(16 - Math.Abs(positionChange))))
+            && !isComplete)
             {
-                if (((targetZones.Length > 0 && (positionChange == targetZones[0] || (-(16 - Math.Abs(positionChange))) == targetZones[0])) 
-                    || pairedPiece.targetZones.Length > 0 && (pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0])
-                    && completeAction == "STARTSCENE")
+                isComplete = true;
+                if (isOuter)
                 {
-                    // TODO: START GAME/GO TO GAME SCENE
+                    pairedPiece.enabled = true;
+                    pairedPiece.Rise();
                 }
-                if (targetZones.Length > 1 
-                    || pairedPiece.targetZones.Length > 1
-                    && completeAction == "STARTSCENE")
+            }
+
+            if (pairedPiece.isComplete && isComplete)
+            {
+                if (completeAction == "STARTSCENE")
                 {
-                    if ((positionChange == targetZones[1] || (-(16 - Math.Abs(positionChange))) == targetZones[1]) 
-                        || ((pairedPiece.positionChange == pairedPiece.targetZones[1]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[1]))
-                        settingsMenu.SetActive(true);
-                }
-                if (targetZones.Length > 2
-                    || pairedPiece.targetZones.Length > 2
-                    && completeAction == "STARTSCENE")
-                {
-                    if ((positionChange == targetZones[2] || (-(16 - Math.Abs(positionChange))) == targetZones[2]) 
-                        || ((pairedPiece.positionChange == pairedPiece.targetZones[2]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[2]))
-                        Application.Quit();
+                    if (targetZones.Length > 2
+                    && ((pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0]))
+                    {
+                        if (positionChange == targetZones[2] || (-(16 - Math.Abs(positionChange))) == targetZones[2])
+                        {
+                            Application.Quit();
+                        }
+                        else if (positionChange == targetZones[1] || (-(16 - Math.Abs(positionChange))) == targetZones[1])
+                        {
+                            settingsMenu.SetActive(true);
+                            pairedPiece.enabled = false;
+                            gameObject.GetComponent<RotatePiece>().enabled = false;
+                        }
+                        else if (positionChange == targetZones[0] || (-(16 - Math.Abs(positionChange))) == targetZones[0])
+                        {
+                            // TODO: START GAME
+                        }
+                    }
+                    else if (pairedPiece.targetZones.Length > 2
+                    && (positionChange == targetZones[0] || (-(16 - Math.Abs(positionChange))) == targetZones[0]))
+                    {
+                        if ((pairedPiece.positionChange == pairedPiece.targetZones[2]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[2])
+                        {
+                            Application.Quit();
+                        }
+                        else if ((pairedPiece.positionChange == pairedPiece.targetZones[1]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[1])
+                        {
+                            settingsMenu.SetActive(true);
+                            pairedPiece.enabled = false;
+                            gameObject.GetComponent<RotatePiece>().enabled = false;
+                        }
+                        else if ((pairedPiece.positionChange == pairedPiece.targetZones[0]) || (-(16 - Math.Abs(pairedPiece.positionChange))) == pairedPiece.targetZones[0])
+                        {
+                            // TODO: START GAME
+                        }
+                    }
                 }
                 if (completeAction == "PUZZLE1")
                 {
                     // TODO: SET PUZZLE1 IS COMPLETE
                 }
-                pairedPiece.enabled = false;
-                gameObject.GetComponent<RotatePiece>().enabled = false;
             }
         }
         else if (timer <= 0 && !resetting)
@@ -86,6 +113,11 @@ public class RotatePiece : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+    }
+
+    public void Rise()
+    {
+        StartCoroutine(VerticalMove());
     }
 
     IEnumerator Reset()
@@ -108,6 +140,19 @@ public class RotatePiece : MonoBehaviour
             yield return new WaitForSeconds(.75f);
         }
         resetting = false;
+        yield return null;
+    }
+
+    IEnumerator VerticalMove()
+    {
+        int verticalTimer = 50;
+        while (verticalTimer > 0)
+        {
+            timer = 5;
+            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f, 0);
+            verticalTimer--;
+            yield return new WaitForSeconds(.05f);
+        }
         yield return null;
     }
 }
