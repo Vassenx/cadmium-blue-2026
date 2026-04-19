@@ -9,6 +9,9 @@ public class CandleSystem : MonoBehaviour
     [SerializeField] private PlayerMovementController playerMovementController; // disable movement while changing candle
     [SerializeField] private Light candleLight;
     [SerializeField] private ParticleSystemRenderer candleFlameRenderer;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip snuffOutCandleAudioClip;
+    [SerializeField] private AudioClip lightCandleAudioClip;
     
     [SerializeField] private float dimDuration = 0.1f;
     [SerializeField] private float glowDuration = 1f;
@@ -21,6 +24,7 @@ public class CandleSystem : MonoBehaviour
     void Start()
     {
         InputHandler.Instance.CandleButtonHeld.AddListener(OnCandleHoldInput);
+        InputHandler.Instance.CandleButtonPressed.AddListener(OnCandlePressInput);
 
         originalLightIntensity = candleLight.intensity;
         isCandleOn = true;
@@ -49,11 +53,17 @@ public class CandleSystem : MonoBehaviour
         }
     }
     
+    public void OnCandlePressInput()
+    {
+        HideCandle();
+    }
+    
     public void ShowCandle()
     {
         // if not already on and not already in the process of dimming
         if (!isCandleOn && !dimmingCandle)
         {
+            audioSource.PlayOneShot(lightCandleAudioClip);
             glowingCandle = true;
         }
     }
@@ -63,6 +73,7 @@ public class CandleSystem : MonoBehaviour
         // if the candle is on and not already in the process of glowing
         if (isCandleOn && !glowingCandle)
         {
+            audioSource.PlayOneShot(snuffOutCandleAudioClip);
             dimmingCandle = true;
         }
     }
