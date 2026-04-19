@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class ScareManager : MonoBehaviour
 {
+    [SerializeField] private GameObject playerSpawnPoint;
+    
     [SerializeField] AudioSource audioSource;
     
     [SerializeField]
