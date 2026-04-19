@@ -19,6 +19,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private Vector3 currMovement;
     [SerializeField] private float vertLimit;
 
+    [SerializeField] private AudioSource footstepPlayer;
+    [SerializeField] private float footstepPitchModulation = 0.1f;
+
     public bool movementEnabled = true;
     
     public bool isInPuzzle = false;
@@ -72,6 +75,12 @@ public class PlayerMovementController : MonoBehaviour
         {
             currMovement.Normalize();
             characterController.Move(currMovement * Time.deltaTime * speed);
+
+            if (!footstepPlayer.isPlaying)
+            {
+                footstepPlayer.pitch = 1f + UnityEngine.Random.Range(-footstepPitchModulation, footstepPitchModulation);
+                footstepPlayer.Play();
+            }
         }
     }
 

@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 public class ScareManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerSpawnPoint;
+    [SerializeField] private GameObject theBeast;
+    [SerializeField] private PlayerActionController playerActionController;
     
     [SerializeField] AudioSource audioSource;
     
@@ -22,12 +24,15 @@ public class ScareManager : MonoBehaviour
 
     [Header("Parameters for randomaized sounds")] [SerializeField]
     private float randomSoundTimer = 60f;
+    public float beastTimer = 40f;
 
     private float ambianceTracker;
+    public float beastTracker;
     
     void Start()
     {
         ambianceTracker = randomSoundTimer;
+        beastTracker = beastTimer;
         playerMovementController = player.GetComponent<PlayerMovementController>();
     }
     
@@ -44,38 +49,70 @@ public class ScareManager : MonoBehaviour
 
     private void Update()
     {
-        //Random sounds
-        randomSoundTimer -= Time.deltaTime;
-        if (randomSoundTimer <= 0.0f)
-        {
-            RandomSoundsTrigger();
-        }
-        
-        
         //logic to decide when to trigger but at abnormal intervals depending on what the player is doing
         //at random occurrences, trigger beast sounds
         if(playerMovementController.isInPuzzle)
         {
+            if(theBeast.activeSelf == false)
+            {
+                beastTimer -= Time.deltaTime;   
+            }
             
+            if (beastTimer <= 0.0f)
+            {
+                if (theBeast.activeSelf == false && !playerActionController.currentPuzzle.GetComponent<PuzzleTransitionManager>().isCompleted)
+                {
+                    TriggerBeastSound();
+                    theBeast.SetActive(true);
+                    theBeast.GetComponent<BeastController>().beastIsActive = true;
+                }
+
+                if (!theBeast.GetComponent<BeastController>().beastIsActive)
+                {
+                    beastTimer = beastTracker;   
+                }
+            }
+        }
+        else
+        {
+            //Random sounds
+            randomSoundTimer -= Time.deltaTime;
+            if (randomSoundTimer <= 0.0f)
+            {
+                RandomSoundsTrigger();
+            }   
         }
     }
 
     public void TriggerScare()
     {
         //TODO
-        scareObjects[0].SetActive(true);
+        //scareObjects[0].SetActive(true);
+        Debug.Log("pass");
     }
 
-    public void TriggerBeast()
+    public void TriggerBeastSound()
     {
+        audioSource.PlayOneShot(beastSounds.audioClips[0]);
  
+    }
+
+    private void EnableBeast()
+    {
+        
+    }
+
+    public void ResetBeastTimer()
+    {
+        beastTimer = beastTracker;
     }
 
 
     void RandomSoundsTrigger()
     {
-        int randIndex = Random.RandomRange(0, ambianceSounds.audioClips.Count);
-        audioSource.PlayOneShot(ambianceSounds.audioClips[randIndex]);
-        randomSoundTimer = ambianceTracker;
+       // int randIndex = Random.RandomRange(0, ambianceSounds.audioClips.Count);
+       // audioSource.PlayOneShot(ambianceSounds.audioClips[randIndex]);
+       // randomSoundTimer = ambianceTracker;
+       Debug.Log("pass");
     }
 }

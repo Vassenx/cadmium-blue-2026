@@ -30,7 +30,7 @@ public class CandleSystem : MonoBehaviour
     private Vector3 goalPosition;
     private bool readyToRelightCandle = false;
     private float elapsedTime;
-    private bool isCandleOn = true;
+    public bool isCandleOn = true;
     private bool dimmingCandle = false;
     private bool glowingCandle = false;
     private float originalLightIntensity;
