@@ -30,7 +30,7 @@ public class RotatePiece : MonoBehaviour
         if (leftControls)
             puzzleAction = InputSystem.actions.FindAction("PuzzleLeft");
         else puzzleAction = InputSystem.actions.FindAction("PuzzleRight");
-        circleOrigin = circle.position;
+        circleOrigin = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class RotatePiece : MonoBehaviour
             if (Math.Abs(positionChange) == 16) positionChange = 0;
             pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
 
-            if ((positionChange > 0 && (targetZones.Contains(positionChange))
+            if (((positionChange > 0 && targetZones.Contains(positionChange))
             || (positionChange < 0 && targetZones.Contains(16 - Math.Abs(positionChange))))
             && !isComplete)
             {

@@ -7,13 +7,13 @@ public class SpearController : MonoBehaviour
     public Vector3 openPosition;
     public bool open;
 
-    public void LiftSpear()
+    public void LiftSpear(int duration)
     {
-        StartCoroutine(MoveSpear(1, 10));
+        StartCoroutine(MoveSpear(1, duration));
     }
-    public void LowerSpear()
+    public void LowerSpear(int duration)
     {
-        StartCoroutine(MoveSpear(-1, 3));
+        StartCoroutine(MoveSpear(-1, duration));
     }
 
     IEnumerator MoveSpear(int direction, int duration)
@@ -24,7 +24,7 @@ public class SpearController : MonoBehaviour
         {
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, goal, Vector3.Distance(startingPosition, goal)/duration);
             duration --;
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(0.1f);
         }
         yield return null;
     }
