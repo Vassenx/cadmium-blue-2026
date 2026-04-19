@@ -1050,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: 4463316900710079854, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: playerCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 793957083}
     - target: {fileID: 4463316900710079854, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: cameraSpeed
       value: 10
@@ -3837,6 +3837,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3941106271430151694, guid: 1194fe08d1e443345a8368a6bbe26f9d, type: 3}
   m_PrefabInstance: {fileID: 778213271}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &793957083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5590842724475557232, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+  m_PrefabInstance: {fileID: 209130240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1001 &809260753
 PrefabInstance:
   m_ObjectHideFlags: 0
