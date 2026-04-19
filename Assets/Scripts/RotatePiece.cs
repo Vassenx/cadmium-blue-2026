@@ -10,7 +10,7 @@ public class RotatePiece : MonoBehaviour
     InputAction puzzleAction;
     public int positionChange = 0;
     public Transform circle;
-    Vector2 circleOrigin;
+    Vector3 circleOrigin;
     public bool leftControls = true;
     float timer = 5;
     bool resetting = false;
@@ -30,7 +30,7 @@ public class RotatePiece : MonoBehaviour
         if (leftControls)
             puzzleAction = InputSystem.actions.FindAction("PuzzleLeft");
         else puzzleAction = InputSystem.actions.FindAction("PuzzleRight");
-        circleOrigin = Vector3.zero;
+        circleOrigin = circle.transform.position;
     }
 
     // Update is called once per frame
@@ -44,7 +44,16 @@ public class RotatePiece : MonoBehaviour
             float neg = puzzleAction.ReadValue<float>();
             positionChange += (int)neg;
             if (Math.Abs(positionChange) == 16) positionChange = 0;
-            pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
+            
+            
+            Vector3 dir = transform.position - circleOrigin;
+            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            dir = rot * dir;
+            pieceTransform.transform.position = circleOrigin + dir;
+            pieceTransform.rotation = rot * transform.rotation;
+            
+            
+            //pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f * neg);
 
             if (((positionChange > 0 && targetZones.Contains(positionChange))
             || (positionChange < 0 && targetZones.Contains(16 - Math.Abs(positionChange))))
@@ -105,7 +114,9 @@ public class RotatePiece : MonoBehaviour
                     lunge.Lunge();
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    PuzzleTransitionManager ptm = gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>();
+                    ptm.EndPuzzleTransition();
+                    ptm.isCompleted = true;
                 }
                 if (completeAction == "PUZZLE2")
                 {
@@ -113,7 +124,9 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
+                    PuzzleTransitionManager ptm = gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>();
+                    ptm.EndPuzzleTransition();
+                    ptm.isCompleted = true;
                 }
                 if (completeAction == "PUZZLE3")
                 {
@@ -121,8 +134,9 @@ public class RotatePiece : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     pairedPiece.enabled = false;
                     gameObject.GetComponent<RotatePiece>().enabled = false;
-                    gameObject.transform.parent.transform.parent.GetComponent<PuzzleTransitionManager>().EndPuzzleTransition();
-
+                    PuzzleTransitionManager ptm = gameObject.transform.parent.transform.parent.parent.GetComponent<PuzzleTransitionManager>();
+                    ptm.EndPuzzleTransition();
+                    ptm.isCompleted = true;
                 }
             }
         }
@@ -150,13 +164,27 @@ public class RotatePiece : MonoBehaviour
         }
         while (positionChange > 0 && resetting)
         {
-            pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
+            //pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
+            Vector3 dir = transform.position - circleOrigin;
+            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            dir = rot * dir;
+            pieceTransform.transform.position = circleOrigin + dir;
+            pieceTransform.rotation = rot * transform.rotation;
+            
             positionChange--;
             yield return new WaitForSeconds(.75f);
         }
         while (positionChange < 0 && resetting)
         {
-            pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f);
+            //pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f);
+            
+            Vector3 dir = transform.position - circleOrigin;
+            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
+            dir = rot * dir;
+            pieceTransform.transform.position = circleOrigin + dir;
+            pieceTransform.rotation = rot * transform.rotation;
+            
+            
             positionChange++;
             yield return new WaitForSeconds(.75f);
         }
@@ -170,7 +198,7 @@ public class RotatePiece : MonoBehaviour
         while (verticalTimer > 0)
         {
             timer = 5;
-            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f, 0);
+            gameObject.transform.parent.transform.position += new Vector3(0, 0.25f * 0.02f, 0);
             verticalTimer--;
             yield return new WaitForSeconds(.05f);
         }

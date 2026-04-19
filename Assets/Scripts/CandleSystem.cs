@@ -5,6 +5,7 @@ using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class CandleSystem : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class CandleSystem : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip snuffOutCandleAudioClip;
     [SerializeField] private AudioClip lightCandleAudioClip;
-    [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject firstpersonCam;
 
+    [SerializeField] private TextMeshProUGUI candleTutorialText;
+
+    
     [SerializeField] private float dimDuration = 0.1f;
     [SerializeField] private float glowDuration = 1f;
 
@@ -33,6 +37,8 @@ public class CandleSystem : MonoBehaviour
     
     void Start()
     {
+        candleTutorialText.gameObject.SetActive(true);
+        
         originalLocation = transform.localPosition;
         InputHandler.Instance.CandleButtonHeld.AddListener(OnCandleHoldInput);
         InputHandler.Instance.CandleButtonPressed.AddListener(OnCandlePressInput);
@@ -42,7 +48,23 @@ public class CandleSystem : MonoBehaviour
 
         var originalMat = candleFlameRenderer.sharedMaterial;
         candleFlameRenderer.sharedMaterial = new Material(originalMat); // prevents color changes to save to the asset
+
+        TurnCandleOff();
     }
+    
+    private void TurnCandleOff() // no lerp, just for start
+    {
+        // update mat
+        Color oldColor = candleFlameRenderer.sharedMaterial.color;
+        candleFlameRenderer.sharedMaterial.color = new Color(oldColor.r, oldColor.g, oldColor.b, 0);
+        // update light
+        candleLight.intensity =0;
+        
+        glowingCandle = false;
+        dimmingCandle = false;
+        isCandleOn = false;
+    }
+
 
     void Update()
     {
@@ -62,6 +84,11 @@ public class CandleSystem : MonoBehaviour
     {
         if (inputSuccess)
         {
+            if (candleTutorialText.gameObject.activeSelf)
+            {
+                candleTutorialText.gameObject.SetActive(false);
+            }
+
             ToggleCandle();
         }
     }
@@ -153,8 +180,8 @@ public class CandleSystem : MonoBehaviour
 
     IEnumerator MoveCandle()
     {
-        Vector3 camForward = camera.transform.forward;
-        Vector3 localCamForward = camera.transform.InverseTransformDirection(camForward);
+        Vector3 camForward = firstpersonCam.transform.forward;
+        Vector3 localCamForward = firstpersonCam.transform.InverseTransformDirection(camForward);
         goalPosition = transform.localPosition + (localCamForward * -1f) * 50f * Time.deltaTime; // backwards
 
         yield return new WaitForSeconds(waitTilMoveCandleBack);

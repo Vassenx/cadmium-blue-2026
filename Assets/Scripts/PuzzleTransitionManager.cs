@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PuzzleTransitionManager : MonoBehaviour
 {
     [Header("Win Condition")] [SerializeField]
     //the puzzle script should enable this and call endpuzzlefunction
-    private bool isCompleted = false;
+    public bool isCompleted = false;
+
+    public UnityEvent<bool> OnPuzzleTransition; // true = switch to puzzle, false = switch back to main
     
     [SerializeField] private List<GameObject> shrines;
     [SerializeField] private CinemachineClearShot puzzleCam;
@@ -28,6 +31,7 @@ public class PuzzleTransitionManager : MonoBehaviour
     public void TriggerPuzzleTransition()
     {
         SwitchToPuzzleCam();
+        OnPuzzleTransition.Invoke(true);
     }
 
     public void EndPuzzleTransition()
@@ -35,6 +39,7 @@ public class PuzzleTransitionManager : MonoBehaviour
         isCompleted = true;
         DisableWolfAndSheep();
         switchToPlayerCam();
+        OnPuzzleTransition.Invoke(false);
     }
 
     void SwitchToPuzzleCam()
