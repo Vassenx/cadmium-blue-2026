@@ -29,7 +29,7 @@ public class PlayerActionController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (gameObject.GetComponent<PlayerMovementController>().movementEnabled)
+        if (gameObject.GetComponent<PlayerMovementController>().movementEnabled && interactAction.IsPressed())
         {
             TriggerRayCast();   
         }
@@ -42,14 +42,11 @@ public class PlayerActionController : MonoBehaviour
         {
             if (hit.transform.CompareTag("Interactable"))
             {
-                if(interactAction.IsPressed())
-                {
                     if (hit.transform.gameObject.TryGetComponent(out PuzzleTransitionManager transitionManager))
                     {
                         currentPuzzle = hit.transform.gameObject;
                         transitionManager.TriggerPuzzleTransition();
                     }
-                }
             }
         }
     }
