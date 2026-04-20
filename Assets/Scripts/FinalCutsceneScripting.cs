@@ -19,12 +19,24 @@ public class FinalCutsceneScripting : MonoBehaviour
     public CinemachineClearShot pastorCam;
     public GameObject playerCam;
 
+    public HeadTurn[] heads;
+
+    private void Start()
+    {
+        heads = new HeadTurn[flock.transform.childCount];
+
+        for(int flockNum = 0; flockNum < flock.transform.childCount; flockNum++)
+        {
+            heads[flockNum] = flock.transform.GetChild(flockNum).GetComponent<HeadTurn>();
+        }
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
             if(other.gameObject.tag == "Player")
         {
-            if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
+            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
             started = true;
             pmc.movementEnabled = false;
             PlayCutscene();   
@@ -58,10 +70,16 @@ public class FinalCutsceneScripting : MonoBehaviour
         yield return new WaitForSeconds(5);
         playerCam.SetActive(false);
         pastorCam.gameObject.SetActive(true);
+
         Debug.Log("testpastor cam");
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(14);
         // JUMPSCARE WITH STING
-        yield return new WaitForSeconds(4);
+        foreach(HeadTurn headTurning in heads)
+        {
+            headTurning.TurnHead(pmc.transform);
+        }
+
+        yield return new WaitForSeconds(2);
         // PAN UP TO DARK CEILING
         // FADE TO BLACK
         yield return new WaitForSeconds(3);
