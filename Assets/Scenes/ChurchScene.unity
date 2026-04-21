@@ -2765,9 +2765,37 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0015132512
       objectReference: {fileID: 0}
+    - target: {fileID: 1253600215968221361, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_text
+      value: Hold CTRL to light candle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253600215968221361, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253600215968221361, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ea87986f17d19a6498b2b7f5e984c4be, type: 2}
+    - target: {fileID: 1253600215968221361, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253600215968221361, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -834564334065652808, guid: ea87986f17d19a6498b2b7f5e984c4be, type: 2}
+    - target: {fileID: 1253600215968221361, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3240228193267370507, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536288175237844641, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7270865802426405804, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.x
