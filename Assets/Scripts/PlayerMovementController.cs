@@ -28,12 +28,16 @@ public class PlayerMovementController : MonoBehaviour
 
     void Start()
     {
-        //see noi evil see no mousey comrade
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         movementEnabled = true;
 
         InputHandler.Instance.Enable();
+    }
+
+    public void HideMouseCursor()
+    {
+        //see noi evil see no mousey comrade
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

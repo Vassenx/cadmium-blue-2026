@@ -5,22 +5,32 @@ using UnityEngine;
 public class PoemScript : MonoBehaviour
 {
     [SerializeField] private GameObject poemObject;
+    [SerializeField] private PlayerMovementController controller;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         poemObject.SetActive(true);
-
-        StartCoroutine(OnEsacpe());
-        //InputHandler.Instance.EscapePlease.AddListener(OnEsacpe);
+        controller =  GetComponent<PlayerMovementController>();
+        
+        StartCoroutine(OnEscape());
     }
 
-    IEnumerator OnEsacpe()
+    IEnumerator OnEscape()
     {
-        
         yield return new WaitForSeconds(10f);
         
-        poemObject.SetActive(false);
+        DisablePoemAndUI();
+    }
 
+    public void OnCloseButton()
+    {
+        DisablePoemAndUI();
+    }
+
+    private void DisablePoemAndUI()
+    {
+        controller.HideMouseCursor();
+        poemObject.SetActive(false);
     }
 }
