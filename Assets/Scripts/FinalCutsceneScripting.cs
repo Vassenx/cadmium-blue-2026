@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FinalCutsceneScripting : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class FinalCutsceneScripting : MonoBehaviour
 
     public HeadTurn[] heads;
 
+    public UnityEvent CutSceneStarted;
+    
     private void Start()
     {
         heads = new HeadTurn[flock.transform.childCount];
@@ -36,7 +39,7 @@ public class FinalCutsceneScripting : MonoBehaviour
     {
             if(other.gameObject.tag == "Player")
         {
-            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
+            if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
             started = true;
             pmc.movementEnabled = false;
             PlayCutscene();   
@@ -50,39 +53,39 @@ public class FinalCutsceneScripting : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        CutSceneStarted.Invoke();
+        
         altar.GetComponent<AudioSource>().Play();
         SpearController sp1c = spear1.GetComponent<SpearController>();
         SpearController sp2c = spear2.GetComponent<SpearController>();
         SpearController sp3c = spear3.GetComponent<SpearController>();
-        sp1c.LiftSpear(1);
-        sp2c.LiftSpear(1);
+        sp1c.LiftSpear(5);
+        sp2c.LiftSpear(5);
         sp3c.LiftSpear(120);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         spear2.GetComponent<AudioSource>().Play();
         sp1c.LowerSpear(5);
         sp2c.LowerSpear(5);
         sp3c.LowerSpear(5);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         wolfPastor.SetActive(true);
         wolfPastor.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds (5);
+        yield return new WaitForSeconds (3);
         flock.SetActive(true);
         yield return new WaitForSeconds(5);
         playerCam.SetActive(false);
         pastorCam.gameObject.SetActive(true);
-
-        Debug.Log("testpastor cam");
-        yield return new WaitForSeconds(14);
+        yield return new WaitForSeconds(44);
         // JUMPSCARE WITH STING
         foreach(HeadTurn headTurning in heads)
         {
-            headTurning.TurnHead(pmc.transform);
+            headTurning.TurnHead(pastorCam.transform);
         }
 
         yield return new WaitForSeconds(2);
         // PAN UP TO DARK CEILING
         // FADE TO BLACK
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
         yield return null;
     }

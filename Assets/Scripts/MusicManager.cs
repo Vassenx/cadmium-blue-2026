@@ -4,6 +4,7 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     private PuzzleTransitionManager[] puzzleTransitionManagers;
+    private FinalCutsceneScripting cutsceneScript;
 
     [SerializeField] private AudioClip mainMusic;
     [SerializeField] private AudioClip puzzleMusic;
@@ -11,6 +12,10 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        
+        cutsceneScript = Object.FindFirstObjectByType<FinalCutsceneScripting>();
+        cutsceneScript.CutSceneStarted.AddListener(OnCutSceneStart);
+        
         puzzleTransitionManagers = Object.FindObjectsByType<PuzzleTransitionManager>(FindObjectsSortMode.None);
         foreach (var puzzleTransitionManager in puzzleTransitionManagers)
         {
@@ -26,5 +31,10 @@ public class MusicManager : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = nextClip;
         audioSource.Play();
+    }
+
+    public void OnCutSceneStart()
+    {
+        audioSource.Stop();
     }
 }
