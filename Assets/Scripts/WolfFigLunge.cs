@@ -13,7 +13,7 @@ public class WolfFigLunge : MonoBehaviour
     IEnumerator AnimateLunge()
     {
         int timer = 5;
-        Vector3 goal = target.transform.position + new Vector3(0, 2.5f, 0);
+        Vector3 goal = target.transform.position + new Vector3(0, 0.1f, 0);
         while (timer > 0)
         {
             gameObject.transform.LookAt(target.transform);
