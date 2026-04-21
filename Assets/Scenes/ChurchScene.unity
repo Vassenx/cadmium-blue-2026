@@ -2933,15 +2933,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.63
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.005
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 9015080603200611032, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.9
+      value: 0.57
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 247815376393234713, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
