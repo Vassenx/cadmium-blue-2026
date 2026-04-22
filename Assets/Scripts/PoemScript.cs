@@ -6,6 +6,8 @@ public class PoemScript : MonoBehaviour
 {
     [SerializeField] private GameObject poemObject;
     [SerializeField] private PlayerMovementController controller;
+
+    private bool hasHiddenPoem = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +32,13 @@ public class PoemScript : MonoBehaviour
 
     private void DisablePoemAndUI()
     {
+        if (hasHiddenPoem)
+        { return; }
+        
+        hasHiddenPoem = true;
         controller.HideMouseCursor();
         poemObject.SetActive(false);
+        controller.movementEnabled = true;
+        controller.ShowMovementCanvas();
     }
 }

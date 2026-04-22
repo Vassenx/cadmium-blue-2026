@@ -21,11 +21,17 @@ public class PuzzleTransitionManager : MonoBehaviour
     [SerializeField] private RotatePiece wolf;
     [SerializeField] private RotatePiece sheep;
 
+    [SerializeField] private SpriteRenderer poemFront;
+    [SerializeField] private SpriteRenderer poemBack;
+
+    [SerializeField] private Canvas puzzleInputCanvas;
 
     private void Awake()
     {
         //we necessarily don't need since we can deactivate the script at start in the editor, but we should ensure on awake
         DisableWolfAndSheep();
+        HidePoem();
+        HidePuzzleCanvas();
     }
 
     public void TriggerPuzzleTransition()
@@ -38,6 +44,7 @@ public class PuzzleTransitionManager : MonoBehaviour
     {
         isCompleted = true;
         DisableWolfAndSheep();
+        HidePuzzleCanvas();
         switchToPlayerCam();
         OnPuzzleTransition.Invoke(false);
     }
@@ -50,9 +57,32 @@ public class PuzzleTransitionManager : MonoBehaviour
         puzzleCam.gameObject.SetActive(true);
         StartCoroutine(EnforceSleep(2f));
         EnableWolfAndSheep();
+        ShowPoem();
+        ShowPuzzleCanvas();
+    }
+    
+    void HidePoem()
+    {
+        poemFront.enabled = false;
+        poemBack.enabled = false;
     }
 
-    
+    void ShowPoem()
+    {
+        poemFront.enabled = true;
+        poemBack.enabled = true;
+    }
+
+    void ShowPuzzleCanvas()
+    {
+        puzzleInputCanvas.gameObject.SetActive(true);
+    }
+
+    void HidePuzzleCanvas()
+    {
+        puzzleInputCanvas.gameObject.SetActive(false);
+    }
+
     //hacky and bad practice but for jam will do
     IEnumerator EnforceSleep(float time)
     {

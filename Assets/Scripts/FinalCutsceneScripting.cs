@@ -54,6 +54,11 @@ public class FinalCutsceneScripting : MonoBehaviour
     IEnumerator Cutscene()
     {
         CutSceneStarted.Invoke();
+
+        // hide them so we don't see anything in the background when looking at the pastor
+        puzzle1.gameObject.SetActive(false);
+        puzzle2.gameObject.SetActive(false);
+        puzzle3.gameObject.SetActive(false);
         
         altar.GetComponent<AudioSource>().Play();
         SpearController sp1c = spear1.GetComponent<SpearController>();

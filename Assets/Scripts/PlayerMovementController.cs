@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -22,15 +23,19 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private AudioSource footstepPlayer;
     [SerializeField] private float footstepPitchModulation = 0.1f;
 
+    [SerializeField] private Canvas movementInputCanvas;
+    
     public bool movementEnabled = true;
     
     public bool isInPuzzle = false;
 
     void Start()
     {
-        movementEnabled = true;
+        movementEnabled = false;
 
         InputHandler.Instance.Enable();
+        
+        HideMovementCanvas(); // hacky like most of my code at this point, but show after poem (poem script)
     }
 
     public void HideMouseCursor()
@@ -38,6 +43,16 @@ public class PlayerMovementController : MonoBehaviour
         //see noi evil see no mousey comrade
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void ShowMovementCanvas()
+    {
+        movementInputCanvas.gameObject.SetActive(true);
+    }
+    
+    private void HideMovementCanvas()
+    {
+        movementInputCanvas.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -60,16 +75,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (InputHandler.Instance == null)
         { return; }
-        
-        /*
-        currMovement = new Vector3(InputHandler.Instance.movementVector2.x, 0, InputHandler.Instance.movementVector2.y);
-        if (!currMovement.AlmostZero())
-        {
-            currMovement.Normalize();
-            characterController.Move(currMovement * Time.deltaTime * speed);
-        }
-        */
-        
         
         Vector3 worldDirection = CalculateWorldDirection();
         currMovement.x = worldDirection.x * speed;
@@ -99,6 +104,16 @@ public class PlayerMovementController : MonoBehaviour
         vertLimit = Mathf.Clamp(vertLimit - mouseY, -30, 60);
         transform.Rotate(0, mouseX, 0);
         playerCam.transform.localRotation = Quaternion.Euler(vertLimit, 0, 0);
-        
+
+        if (movementInputCanvas.isActiveAndEnabled && mouseX != 0)
+        {
+            StartCoroutine(WaitThenRemoveCanvas());
+        }
+    }
+
+    IEnumerator WaitThenRemoveCanvas()
+    {
+        yield return new WaitForSeconds(3f);
+        HideMovementCanvas();
     }
 }
