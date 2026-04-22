@@ -12,8 +12,6 @@ public class RotatePiece : MonoBehaviour
     public Transform circle;
     Vector3 circleOrigin;
     public bool leftControls = true;
-    float timer = 5;
-    bool resetting = false;
     public int[] targetZones;
     public RotatePiece pairedPiece;
     public string completeAction;
@@ -39,8 +37,6 @@ public class RotatePiece : MonoBehaviour
         if (isOuter && isComplete && completeAction != "STARTSCENE") return;
         if (puzzleAction.WasPerformedThisFrame())
         {
-            timer = 5; // Reset timer
-            resetting = false;
             float neg = puzzleAction.ReadValue<float>();
             positionChange += (int)neg;
             if (Math.Abs(positionChange) == 16) positionChange = 0;
@@ -140,14 +136,6 @@ public class RotatePiece : MonoBehaviour
                 }
             }
         }
-        else if (timer <= 0 && !resetting)
-        {
-            StartCoroutine(Reset());
-        }
-        else if (!resetting)
-        {
-            timer -= Time.deltaTime;
-        }
     }
 
     public void Rise()
@@ -155,49 +143,11 @@ public class RotatePiece : MonoBehaviour
         StartCoroutine(VerticalMove());
     }
 
-    IEnumerator Reset()
-    {
-        resetting = true;
-        if (timer > 0)
-        {
-            yield return null;
-        }
-        while (positionChange > 0 && resetting)
-        {
-            //pieceTransform.RotateAround(circleOrigin, Vector3.up, -22.5f);
-            Vector3 dir = transform.position - circleOrigin;
-            Quaternion rot = Quaternion.AngleAxis(-22.5f, Vector3.up);
-            dir = rot * dir;
-            pieceTransform.transform.position = circleOrigin + dir;
-            pieceTransform.rotation = rot * transform.rotation;
-            
-            positionChange--;
-            yield return new WaitForSeconds(.75f);
-        }
-        while (positionChange < 0 && resetting)
-        {
-            //pieceTransform.RotateAround(circleOrigin, Vector3.up, 22.5f);
-            
-            Vector3 dir = transform.position - circleOrigin;
-            Quaternion rot = Quaternion.AngleAxis(22.5f, Vector3.up);
-            dir = rot * dir;
-            pieceTransform.transform.position = circleOrigin + dir;
-            pieceTransform.rotation = rot * transform.rotation;
-            
-            
-            positionChange++;
-            yield return new WaitForSeconds(.75f);
-        }
-        resetting = false;
-        yield return null;
-    }
-
     IEnumerator VerticalMove()
     {
         int verticalTimer = 50;
         while (verticalTimer > 0)
         {
-            timer = 5;
             float scaling = completeAction == "STARTSCENE" ? 1 : 0.02f;
             gameObject.transform.parent.transform.position += new Vector3(0, 0.25f * scaling, 0);
             verticalTimer--;
