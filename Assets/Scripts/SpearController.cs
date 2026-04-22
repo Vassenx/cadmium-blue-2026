@@ -11,6 +11,12 @@ public class SpearController : MonoBehaviour
     {
         StartCoroutine(MoveSpear(1, duration));
     }
+
+    public void StopSpear()
+    {
+        StopAllCoroutines();
+    }
+    
     public void LowerSpear(int duration)
     {
         StartCoroutine(MoveSpear(-1, duration));

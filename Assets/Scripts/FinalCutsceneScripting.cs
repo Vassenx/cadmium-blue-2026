@@ -66,9 +66,14 @@ public class FinalCutsceneScripting : MonoBehaviour
         SpearController sp3c = spear3.GetComponent<SpearController>();
         sp1c.LiftSpear(5);
         sp2c.LiftSpear(5);
-        sp3c.LiftSpear(120);
-        yield return new WaitForSeconds(10);
+        sp3c.LiftSpear(100);
+        yield return new WaitForSeconds(10.3f); // slightly after last spear finishes lifting just in case
         spear2.GetComponent<AudioSource>().Play();
+        
+        sp1c.StopSpear();
+        sp2c.StopSpear();
+        sp3c.StopSpear();
+        
         sp1c.LowerSpear(5);
         sp2c.LowerSpear(5);
         sp3c.LowerSpear(5);
