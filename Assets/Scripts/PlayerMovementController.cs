@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Microsoft.Unity.VisualStudio.Editor;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -113,7 +114,7 @@ public class PlayerMovementController : MonoBehaviour
 
     IEnumerator WaitThenRemoveCanvas()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         HideMovementCanvas();
     }
 }
