@@ -15,12 +15,12 @@ public class FinalCutsceneScripting : MonoBehaviour
     public GameObject altar;
     public GameObject flock;
     public PlayerMovementController pmc;
-    bool started = false;
 
     public CinemachineClearShot pastorCam;
     public GameObject playerCam;
 
     public HeadTurn[] heads;
+    public GameObject candle;
 
     public UnityEvent CutSceneStarted;
     
@@ -37,10 +37,9 @@ public class FinalCutsceneScripting : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-            if(other.gameObject.tag == "Player")
+            if(other.gameObject.CompareTag("Player"))
         {
-            if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
-            started = true;
+            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
             pmc.movementEnabled = false;
             PlayCutscene();   
         }
@@ -77,25 +76,33 @@ public class FinalCutsceneScripting : MonoBehaviour
         sp1c.LowerSpear(5);
         sp2c.LowerSpear(5);
         sp3c.LowerSpear(5);
-        yield return new WaitForSeconds(1f);
+        candle.SetActive(false);
+        yield return new WaitForSeconds(4);
         wolfPastor.SetActive(true);
         wolfPastor.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds (3);
         flock.SetActive(true);
-        yield return new WaitForSeconds(5);
-        playerCam.SetActive(false);
+        yield return new WaitForSeconds(2.5f);
         pastorCam.gameObject.SetActive(true);
-        yield return new WaitForSeconds(44);
-        // JUMPSCARE WITH STING
+        yield return new WaitForSeconds(10);
+        playerCam.transform.LookAt(wolfPastor.transform);
+        playerCam.transform.position += new Vector3(0, 0.5f, 4);
+        yield return new WaitForSeconds(10);
+        pastorCam.gameObject.SetActive(false);
+        yield return new WaitForSeconds(15);
         foreach(HeadTurn headTurning in heads)
         {
-            headTurning.TurnHead(pastorCam.transform);
+            headTurning.TurnHead(playerCam.transform);
         }
 
         yield return new WaitForSeconds(2);
-        // PAN UP TO DARK CEILING
-        // FADE TO BLACK
-        yield return new WaitForSeconds(1);
+        // TODO: Scrap this and change to rotate slowly upwards into black gradient, transitioning into credits
+        /* int timer = 100;
+        while (timer > 0)
+        {
+            playerCam.transform.position += new Vector3(0, 0.2f, 0);
+            timer--;
+            yield return new WaitForSeconds(0.05f);
+        } */
         UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
         yield return null;
     }

@@ -316,104 +316,6 @@ CapsuleCollider:
   m_Height: 3.62
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &64257473
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1308837760}
-    m_Modifications:
-    - target: {fileID: 3575279031938395494, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575279031938395494, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575279031938395494, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: 'm_Cameras.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1181846206}
-    - target: {fileID: 3864941149935515357, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864941149935515357, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864941149935515357, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864941149935515357, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864941149935515357, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864941149935515357, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246231263934368778, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_Name
-      value: Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5799999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 14.929999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 4.519
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
---- !u!4 &64257474 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7878818461232338708, guid: 0667aadff38c75f4d99df1b2374197ab, type: 3}
-  m_PrefabInstance: {fileID: 64257473}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &71750275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,6 +945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101ab058c10be44b3934a152d9e834cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScareManager
+--- !u!1 &151173578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2979203211896123519, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
+  m_PrefabInstance: {fileID: 209130240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163094295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1828,6 +1735,7 @@ MonoBehaviour:
   pastorCam: {fileID: 1308837759}
   playerCam: {fileID: 209130241}
   heads: []
+  candle: {fileID: 151173578}
   CutSceneStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -1869,7 +1777,7 @@ Transform:
   m_GameObject: {fileID: 258056445}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04792, y: 0, z: -26.62}
+  m_LocalPosition: {x: 0.05, y: 0, z: -30}
   m_LocalScale: {x: 21.601604, y: 1, z: 1.544813}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6484,15 +6392,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2125902539576343998b0e08d0ef7be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2125902539576343998b0e08d0ef7be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2125902539576343998b0e08d0ef7be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35.07
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2125902539576343998b0e08d0ef7be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6559,8 +6467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4669bb0715cb2b42b7159b1fa1c763c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpearController
-  shutPosition: {x: 0.58, y: 3.2, z: -35.07}
-  openPosition: {x: 1.74, y: 4.8, z: -35.07}
+  shutPosition: {x: 0, y: 2.65, z: -35}
+  openPosition: {x: 1.74, y: 4.8, z: -35}
   open: 0
 --- !u!1 &1030943297
 GameObject:
@@ -8946,11 +8854,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3941106271430151694, guid: 1194fe08d1e443345a8368a6bbe26f9d, type: 3}
   m_PrefabInstance: {fileID: 1179300077}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &1181846206 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6067788504403544744, guid: a794a3f3fac207c48ab1c19449182faa, type: 3}
-  m_PrefabInstance: {fileID: 209130240}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1192232577
 GameObject:
   m_ObjectHideFlags: 0
@@ -9698,7 +9601,7 @@ MonoBehaviour:
       CustomLookAtTarget: 0
   DefaultBlend:
     Style: 1
-    Time: 0.5
+    Time: 2
     CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -9725,7 +9628,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 628067364}
-  - {fileID: 64257474}
   m_Father: {fileID: 1605660675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1310885594
@@ -11015,11 +10917,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7504c43174effcb42a3844c625504052, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7504c43174effcb42a3844c625504052, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.02
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7504c43174effcb42a3844c625504052, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11093,7 +10995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4669bb0715cb2b42b7159b1fa1c763c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpearController
-  shutPosition: {x: -0.39, y: 3.02, z: -35}
+  shutPosition: {x: 0, y: 2.65, z: -35}
   openPosition: {x: -1.75, y: 4.8, z: -35}
   open: 0
 --- !u!82 &1465043441
