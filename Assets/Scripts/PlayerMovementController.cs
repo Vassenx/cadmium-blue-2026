@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
 using Unity.Cinemachine;
 using UnityEngine;
 
