@@ -10,10 +10,12 @@ public class SceneManager : MonoBehaviour
 
     void Update()
     {
+        /*
         if (InputHandler.Instance.DebugSpacePressed())
         {
             LoadScene("SamTest");
         }
+        */
     }
 
     public void LoadScene(string sceneName)

@@ -91,6 +91,7 @@ public class RotatePiece : MonoBehaviour
                     {
                         if ((pairedPiece.positionChange > 0 && pairedPiece.positionChange == pairedPiece.targetZones[2]) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[2]))
                         {
+                            Debug.Log("quit");
                             Application.Quit();
                         }
                         else if ((pairedPiece.positionChange > 0 && pairedPiece.positionChange == pairedPiece.targetZones[1]) || (pairedPiece.positionChange < 0 && (16 - Math.Abs(pairedPiece.positionChange)) == pairedPiece.targetZones[1]))

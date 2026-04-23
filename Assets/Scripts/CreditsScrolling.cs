@@ -11,7 +11,9 @@ public class CreditsScrolling : MonoBehaviour
     public GameObject title;
     public AudioSource audioSource;
     public Transform[] allSheep;
-
+    public GameObject devil;
+    public AudioClip agony;
+    
     void Start()
     {
         allSheep = new Transform[sheep.transform.childCount];
@@ -67,6 +69,14 @@ public class CreditsScrolling : MonoBehaviour
         }
 
         // TODO: title fade in
+        yield return new WaitForSeconds(5);
+        title.SetActive(true);
+        yield return new WaitForSeconds(3);
+        title.SetActive(false);
+        devil.SetActive(true);
+        devil.GetComponent<AudioSource>().PlayOneShot(agony);
+        yield return new WaitForSeconds(4);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         yield return null;
     }
 }
