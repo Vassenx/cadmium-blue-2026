@@ -60,6 +60,7 @@ public class FinalCutsceneScripting : MonoBehaviour
         puzzle2.gameObject.SetActive(false);
         puzzle3.gameObject.SetActive(false);
         
+
         altar.GetComponent<AudioSource>().Play();
         SpearController sp1c = spear1.GetComponent<SpearController>();
         SpearController sp2c = spear2.GetComponent<SpearController>();
@@ -85,6 +86,7 @@ public class FinalCutsceneScripting : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         pastorCam.gameObject.SetActive(true);
         yield return new WaitForSeconds(10);
+
         playerCam.transform.LookAt(wolfPastor.transform);
         playerCam.transform.position += new Vector3(0, 0.5f, 4);
         yield return new WaitForSeconds(10);
@@ -95,7 +97,7 @@ public class FinalCutsceneScripting : MonoBehaviour
             headTurning.TurnHead(lookAtPosition.transform);
         }
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(4);
         // TODO: Scrap this and change to rotate slowly upwards into black gradient, transitioning into credits
         /* int timer = 100;
         while (timer > 0)
