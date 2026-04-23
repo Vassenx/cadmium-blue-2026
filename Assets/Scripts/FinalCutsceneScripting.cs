@@ -15,6 +15,7 @@ public class FinalCutsceneScripting : MonoBehaviour
     public GameObject altar;
     public GameObject flock;
     public PlayerMovementController pmc;
+    public GameObject lookAtPosition;
 
     public CinemachineClearShot pastorCam;
     public GameObject playerCam;
@@ -88,13 +89,13 @@ public class FinalCutsceneScripting : MonoBehaviour
         playerCam.transform.position += new Vector3(0, 0.5f, 4);
         yield return new WaitForSeconds(10);
         pastorCam.gameObject.SetActive(false);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(2);
         foreach(HeadTurn headTurning in heads)
         {
-            headTurning.TurnHead(playerCam.transform);
+            headTurning.TurnHead(lookAtPosition.transform);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(8);
         // TODO: Scrap this and change to rotate slowly upwards into black gradient, transitioning into credits
         /* int timer = 100;
         while (timer > 0)
