@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: {x: 0.30798596, y: 0.62329, z: 1, w: 0.0000000034009415}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.25487494, z: 0.4672902, w: -0.027472423}
+    m_Value: {x: 1, y: 0.41209492, z: 0.3601148, w: -0.027472423}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.50613075, z: 0.18404871, w: 0.21978027}
+    m_Value: {x: 1, y: 0.43071252, z: 0.10599369, w: 0.21978027}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Bloom
-  active: 0
+  active: 1
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.7924528, g: 0.44117644, b: 0.14578143, a: 1}
+    m_Value: {r: 0.20754719, g: 0.18565327, b: 0.16740835, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
