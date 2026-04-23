@@ -40,9 +40,16 @@ public class FinalCutsceneScripting : MonoBehaviour
     {
             if(other.gameObject.CompareTag("Player"))
         {
-            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted || started) return;
-            pmc.movementEnabled = false;
-            PlayCutscene();   
+            //if (!puzzle1.isCompleted || !puzzle2.isCompleted || !puzzle3.isCompleted ) return;
+            if (puzzle1.isCompleted && puzzle2.isCompleted && puzzle3.isCompleted)
+            {
+                pmc.movementEnabled = false;
+                PlayCutscene();      
+            }
+            else
+            {
+                return;
+            }
         }
     }
 
