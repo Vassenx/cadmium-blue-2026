@@ -6,6 +6,7 @@ public class PoemScript : MonoBehaviour
 {
     [SerializeField] private GameObject poemObject;
     [SerializeField] private PlayerMovementController controller;
+    [SerializeField] private AudioSource openingDialogue;
 
     private bool hasHiddenPoem = false;
     
@@ -20,7 +21,7 @@ public class PoemScript : MonoBehaviour
 
     IEnumerator OnEscape()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(28f);
         
         DisablePoemAndUI();
     }
@@ -40,5 +41,6 @@ public class PoemScript : MonoBehaviour
         poemObject.SetActive(false);
         controller.movementEnabled = true;
         controller.ShowMovementCanvas();
+        openingDialogue.Stop();
     }
 }
